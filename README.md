@@ -1,2 +1,2 @@
-# oredunch.github.io
-Website for an anonymous client
+# SamO-staticsite
+Website, if you didnt realize yet.
