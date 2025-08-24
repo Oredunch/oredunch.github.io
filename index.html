@@ -9,31 +9,60 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      background-color: #181414;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    html, body {
       margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
       font-family: 'Inter', Arial, sans-serif;
-      flex-direction: column;
+      background-color: #181414;
       color: #00ffff;
+      overflow: hidden;
+    }
+
+    /* Wrapper to keep everything centered */
+    .center-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      -moz-osx-font-smoothing: grayscale;
+      min-width: 300px; /* prevents text wrapping too early */
+    }
+
+    /* Logo wrapper with video behind it */
+    .logo-wrapper {
+      position: relative;
+      display: block;       /* ensure block centering */
+      margin: 0 auto;       /* horizontally center the logo/video */
+    }
+
+    /* Noise video */
+    .logo-wrapper .background {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150%;   /* slightly bigger than logo */
+      height: 150%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 1.0;  /* optional */
+      object-fit: contain;
+    }
+
+    img.logo {
+      width: 150px;
+      display: block; /* keep logo above video */
+      position: relative;
+      margin: 0 auto; /* center horizontally */
     }
 
     h1 {
       font-weight: 500; 
       margin: 10px 0;
       font-size: 36px;
-    }
-
-    img.logo {
-      width: 150px; 
-      margin-bottom: 0px;
+      white-space: nowrap; /* keep text on one row */
     }
 
     a.button {
@@ -46,6 +75,7 @@
       border-radius: 5px;
       font-size: 18px;
       transition: background-color 0.3s;
+      white-space: nowrap;
     }
 
     a.button:hover {
@@ -85,32 +115,40 @@
 
     /* Mobile adjustments */
     @media (max-width: 600px) {
-      html, body {
-        overflow: hidden; /* prevent scrolling */
-      }
-
       img.logo {
-        width: 60%; /* bigger relative logo */
+        width: 60%;
       }
 
       h1 {
-        font-size: 20px; /* smaller text on mobile */
+        font-size: 20px;
       }
 
       a.button {
-        font-size: 16px;  /* normal tap-friendly button */
+        font-size: 16px;
         padding: 10px 16px;
+      }
+
+      .logo-wrapper .background {
+        width: 120%;
+        height: 120%;
       }
     }
   </style>
 </head>
 <body>
-  
-  <img src="images/SamO.png" alt="Logo" class="logo">
 
-  <h1>Sammy Oredunchinch</h1>
+  <!-- Centered wrapper -->
+  <div class="center-wrapper">
+    <div class="logo-wrapper">
+      <video autoplay loop muted playsinline class="background">
+        <source src="videos/NoiseAnim.webm" type="video/webm">
+      </video>
+      <img src="images/SamO.png" alt="Logo" class="logo">
+    </div>
 
-  <a href="https://www.youtube.com/@SammyOredunchinch" target="_blank" class="button">YouTube</a>
+    <h1>Sammy Oredunchinch</h1>
+    <a href="https://www.youtube.com/@SammyOredunchinch" target="_blank" class="button">YouTube</a>
+  </div>
 
   <!-- GitHub logo with fade -->
   <a href="https://github.com/Oredunch/oredunch.github.io" target="_blank" class="github-corner">
