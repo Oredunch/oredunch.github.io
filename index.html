@@ -33,36 +33,34 @@
     /* Logo wrapper with video behind it */
     .logo-wrapper {
       position: relative;
-      display: block;       /* ensure block centering */
-      margin: 0 auto;       /* horizontally center the logo/video */
+      display: block;       
+      margin: 0 auto;       
     }
 
     /* Noise video */
-    .logo-wrapper .background {
+    video.background {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 150%;   /* slightly bigger than logo */
+      width: 150%;
       height: 150%;
-      pointer-events: none;
-      z-index: -1;
-      opacity: 1.0;  /* optional */
       object-fit: contain;
+      z-index: -1;
     }
 
     img.logo {
       width: 150px;
-      display: block; /* keep logo above video */
+      display: block; 
       position: relative;
-      margin: 0 auto; /* center horizontally */
+      margin: 0 auto; 
     }
 
     h1 {
       font-weight: 500; 
       margin: 10px 0;
       font-size: 36px;
-      white-space: nowrap; /* keep text on one row */
+      white-space: nowrap; 
     }
 
     a.button {
@@ -138,18 +136,17 @@
 <body>
 
   <!-- Centered wrapper -->
-  <div class="center-wrapper">
-    <div class="logo-wrapper">
-      <video autoplay loop muted playsinline class="background">
-        <source src="videos/NoiseAnim.webm" type="video/webm">
-      </video>
+    <div class="center-wrapper">
+      <div class="logo-wrapper">
+        <video autoplay loop muted playsinline class="background">
+          <source src="videos/NoiseAnim.webm" type="video/webm">
+        </video>
+        <img src="images/SamO.png" alt="Logo" class="logo">
+      </div>
 
-      <img src="images/SamO.png" alt="Logo" class="logo">
+      <h1>Sammy Oredunchinch</h1>
+      <a href="https://www.youtube.com/@SammyOredunchinch" target="_blank" class="button">YouTube</a>
     </div>
-
-    <h1>Sammy Oredunchinch</h1>
-    <a href="https://www.youtube.com/@SammyOredunchinch" target="_blank" class="button">YouTube</a>
-  </div>
 
   <!-- GitHub logo with fade -->
   <a href="https://github.com/Oredunch/oredunch.github.io" target="_blank" class="github-corner">
