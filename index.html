@@ -20,39 +20,23 @@
       overflow: hidden;
     }
 
-    /* Wrapper to keep everything centered */
     .center-wrapper {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      min-width: 300px; /* prevents text wrapping too early */
+      min-width: 300px;
     }
 
-    /* Logo wrapper with video behind it */
     .logo-wrapper {
-      position: relative;
       display: block;       
       margin: 0 auto;       
-    }
-
-    /* Noise video */
-    video.background {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 150%;
-      height: 150%;
-      object-fit: contain;
-      z-index: -1;
     }
 
     img.logo {
       width: 150px;
       display: block; 
-      position: relative;
       margin: 0 auto; 
     }
 
@@ -80,7 +64,6 @@
       background-color: #555555;
     }
 
-    /* GitHub corner with fade */
     .github-corner {
       position: fixed;
       bottom: 10px;
@@ -111,7 +94,6 @@
       opacity: 0;
     }
 
-    /* Mobile adjustments */
     @media (max-width: 600px) {
       img.logo {
         width: 60%;
@@ -125,30 +107,20 @@
         font-size: 16px;
         padding: 10px 16px;
       }
-
-      .logo-wrapper .background {
-        width: 120%;
-        height: 120%;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Centered wrapper -->
-    <div class="center-wrapper">
-      <div class="logo-wrapper">
-        <video autoplay loop muted playsinline class="background">
-          <source src="videos/NoiseAnim.webm" type="video/webm">
-        </video>
-        <img src="images/SamO.png" alt="Logo" class="logo">
-      </div>
-
-      <h1>Sammy Oredunchinch</h1>
-      <a href="https://www.youtube.com/@SammyOredunchinch" target="_blank" class="button">YouTube</a>
+  <div class="center-wrapper">
+    <div class="logo-wrapper">
+      <img src="images/SamO.png" alt="Logo" class="logo">
     </div>
 
-  <!-- GitHub logo with fade -->
+    <h1>Sammy Oredunchinch</h1>
+    <a href="https://www.youtube.com/@SammyOredunchinch" target="_blank" class="button">YouTube</a>
+  </div>
+
   <a href="https://github.com/Oredunch/oredunch.github.io" target="_blank" class="github-corner">
     <img src="images/github-mark.svg" alt="GitHub" class="default">
     <img src="images/github-mark-cyan.svg" alt="GitHub" class="hover">
