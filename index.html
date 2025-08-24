@@ -69,8 +69,13 @@
       transition: filter 0.3s;
     }
 
-    .github-corner:hover img {
-      filter: brightness(0) invert(1); /* hover color (#00ffff) */
+        .github-corner svg path {
+      transition: fill 0.3s;
+    }
+
+    .github-corner:hover svg path {
+      fill: #00ffff;
+    }
     }
   </style>
 </head>
@@ -84,8 +89,10 @@
 
   <!-- GitHub corner -->
   <a href="https://github.com/0redunch1nch/oredunch.github.io" target="_blank" class="github-corner">
-    <img src="images/github-mark.svg" alt="GitHub">
-  </a>
+  <svg viewBox="0 0 16 16" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+    <path d="images/github-mark.svg"></path>
+  </svg>
+</a>
 
 </body>
 </html>
