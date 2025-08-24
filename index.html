@@ -82,6 +82,26 @@
     .github-corner:hover img.default {
       opacity: 0;
     }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      html, body {
+        overflow: hidden; /* prevent scrolling */
+      }
+
+      img.logo {
+        width: 60%; /* bigger relative logo */
+      }
+
+      h1 {
+        font-size: 20px; /* smaller text on mobile */
+      }
+
+      a.button {
+        font-size: 16px;  /* normal tap-friendly button */
+        padding: 10px 16px;
+      }
+    }
   </style>
 </head>
 <body>
