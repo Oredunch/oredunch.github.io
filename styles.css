@@ -1,99 +1,114 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: 'DM Sans', sans-serif;
-  background-color: #181414;
-  color: #00ffff;
-  overflow: hidden;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	font-family: 'DM Sans', sans-serif;
+	background-color: #181414;
+	color: #00ffff;
+	overflow: hidden;
 }
+
 .center-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  min-width: 300px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	min-width: 300px;
 }
+
 .logo-wrapper {
-  display: block;       
-  margin: 0 auto;       
+	display: block;
+	margin: 0 auto;
 }
+
 img.logo {
-  width: 150px;
-  display: block; 
-  margin: 0 auto; 
+	width: 150px;
+	display: block;
+	margin: 0 auto;
 }
+
 h1 {
-  font-weight: 500; 
-  margin: 10px 0;
-  font-size: 36px;
-  white-space: nowrap; 
+	font-weight: 500;
+	margin: 10px 0;
+	font-size: 36px;
+	white-space: nowrap;
 }
+
 a.button {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #333333;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 25px;
-  font-size: 18px;
-  transition: background-color 0.3s;
-  white-space: nowrap;
+	display: inline-block;
+	margin-top: 10px;
+	padding: 10px 20px;
+	background-color: #333333;
+	color: #ffffff;
+	text-decoration: none;
+	border-radius: 25px;
+	font-size: 18px;
+	transition: background-color 0.3s;
+	white-space: nowrap;
 }
-a.button:hover {
-  background-color: #555555;
-  animation: OpacityWobble 1s infinite;
+
+@media (hover: hover) {
+	a.button:hover {
+		background-color: #555555;
+		animation: OpacityWobble 1s infinite;
+	}
+}
+
+a.button:active {
+	background-color: #040404 !important;
+	animation: none !important;
 }
 
 @keyframes OpacityWobble {
-  0% {filter: opacity(1);}
-  50% {filter: opacity(0.8);}
-  100% {filter: opacity(1);}
-}
-
-a.button:active{
-  background-color: #040404;
+	0% {filter: opacity(1);}
+	50% {filter: opacity(0.8);}
+	100% {filter: opacity(1);}
 }
 
 .github-corner {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  width: 40px;
-  height: 40px;
-  z-index: 1000;
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+	width: 40px;
+	height: 40px;
+	z-index: 1000;
 }
+
 .github-corner img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  transition: opacity 0.3s;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transition: opacity 0.3s;
 }
+
 .github-corner img.hover {
-  opacity: 0;
+	opacity: 0;
 }
-.github-corner:hover img.hover {
-  opacity: 1;
+
+@media (hover: hover) {
+	.github-corner:hover img.hover {
+		opacity: 1;
+	}
+	.github-corner:hover img.default {
+		opacity: 0;
+	}
 }
-.github-corner:hover img.default {
-  opacity: 0;
-}
+
 @media (max-width: 600px) {
-    img.logo {
-      width: 60%;
-    }
-    h1 {
-      font-size: 20px;
-    }
-    a.button {
-    font-size: 16px;
-    padding: 10px 16px;
-    }
+	img.logo {
+		width: 60%;
+	}
+	h1 {
+		font-size: 20px;
+	}
+	a.button {
+		font-size: 16px;
+		padding: 10px 16px;
+	}
 }
