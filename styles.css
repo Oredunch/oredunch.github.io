@@ -25,10 +25,16 @@ html, body {
 	margin: 0 auto;
 }
 
-img.logo {
+.logo {
 	width: 150px;
 	display: block;
 	margin: 0 auto;
+	transition: transform 5s ease-out, filter 5	s ease-out;
+}
+
+.logo:hover {
+	transform: rotate(8640deg);
+	filter: blur(8px);
 }
 
 h1 {
@@ -101,7 +107,7 @@ a.button:active {
 }
 
 @media (max-width: 600px) {
-	img.logo {
+	.logo {
 		width: 60%;
 	}
 	h1 {
