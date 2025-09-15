@@ -29,7 +29,7 @@ html, body {
 	width: 150px;
 	display: block;
 	margin: 0 auto;
-	transition: transform 5s ease-out, filter 5s ease-out;
+	transition: transform 5s ease-in-out, filter 5s ease-in-out;
 }
 
 .logo:hover {
@@ -116,5 +116,29 @@ a.button:active {
 	a.button {
 		font-size: 16px;
 		padding: 10px 16px;
+	}
+}
+
+
+
+@media (hover: none) {
+	.logo{
+		transition: none;
+	}
+
+	.logo.spin {
+		animation: tapSpin 5s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+	@keyframes tapSpin {
+		0%   { transform: rotate(0deg); filter: blur(0); }
+		50%  { transform: rotate(4320deg); filter: blur(8px); }
+		100% { transform: rotate(0deg); filter: blur(0); }
+	}
+}
+
+@media (hover: hover) {
+	.logo.spin {
+		animation: none;
 	}
 }
