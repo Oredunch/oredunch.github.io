@@ -26,15 +26,17 @@ html, body {
 }
 
 .logo {
+	will-change: transform, filter;
 	width: 150px;
 	display: block;
 	margin: 0 auto;
+	transform-origin: center;
 	transition: transform 5s ease-in-out, filter 5s ease-in-out;
 }
 
 .logo:hover {
 	transform: rotate(8640deg);
-	filter: blur(8px);
+	filter: blur(64px) hue-rotate(360deg);
 }
 
 h1 {
@@ -132,7 +134,7 @@ a.button:active {
 	}
 	@keyframes tapSpin {
 		0%   { transform: rotate(0deg); filter: blur(0); }
-		50%  { transform: rotate(4320deg); filter: blur(8px); }
+		50%  { transform: rotate(4320deg); filter: blur(64px); }
 		100% { transform: rotate(0deg); filter: blur(0); }
 	}
 }
