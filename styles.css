@@ -55,7 +55,7 @@ a.button {
 	text-decoration: none;
 	border-radius: 25px;
 	font-size: 18px;
-	transition: background-color 0.3s;
+	transition: background-color 0.1s linear;
 	white-space: nowrap;
 }
 
@@ -144,3 +144,4 @@ a.button:active {
 		animation: none;
 	}
 }
+
