@@ -15,9 +15,11 @@ function spinLogo(e) {
 function endSpin() {
 	isSpinning = false;
 	logo.classList.remove('spin');
-	logo.style.filter = 'drop-shadow(5px 15px 5px #000A)';
+	logo.style.filter = 'drop-shadow(5px 15px 5px #000A) blur(0)';
 	logo.style.cursor = 'pointer';
 	logo.style.transform = 'none';
+	logo.offsetHeight;
+	logo.style.transform = 'translateZ(0)'; //nudge gpu
 }
 
 logo.addEventListener('click', spinLogo);
