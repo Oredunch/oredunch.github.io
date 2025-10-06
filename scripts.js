@@ -21,4 +21,4 @@ if(window.matchMedia('(hover: none)').matches){
 }
 
 
-// this was so hard and frustrating im never doing this again
+//this was so hard and frustrating im never doing this again

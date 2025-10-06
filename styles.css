@@ -1,13 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+:root {
+	--bg-color: #181414;
+	--text-color: #00ffff;
+	--button-bg: #333333;
+	--button-hover-bg: #555555;
+	--button-active-bg: #040404;
+	--button-text-color: #ffffff;
+	--blur-amount: 64px;
+}
+
 html, body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	height: 100%;
-	font-family: 'DM Sans', sans-serif;
-	background-color: #181414;
-	color: #00ffff;
+	font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
 	overflow: hidden;
 }
 
@@ -31,12 +41,14 @@ html, body {
 	display: block;
 	margin: 0 auto;
 	transform-origin: center;
-	transition: transform 5s ease-in-out, filter 5s ease-in-out;
+	transition: transform 2s ease-in-out, filter 2s ease-in-out;
 }
 
-.logo:hover {
-	transform: rotate(8640deg);
-	filter: blur(64px) hue-rotate(360deg);
+@media (hover: hover) {
+	.logo:hover {
+		transform: rotate(1440deg);
+		filter: blur(var(--blur-amount)) hue-rotate(360deg);
+	}
 }
 
 h1 {
@@ -50,31 +62,25 @@ a.button {
 	display: inline-block;
 	margin-top: 10px;
 	padding: 10px 20px;
-	background-color: #333333;
-	color: #ffffff;
+	background-color: var(--button-bg);
+	color: var(--button-text-color);
 	text-decoration: none;
 	border-radius: 25px;
 	font-size: 18px;
 	transition: background-color 0.1s linear;
 	white-space: nowrap;
+	cursor: pointer;
 }
 
 @media (hover: hover) {
 	a.button:hover {
-		background-color: #555555;
-		animation: OpacityWobble 1s infinite;
+		background-color: var(--button-hover-bg);
 	}
 }
 
 a.button:active {
-	background-color: #040404 !important;
-	animation: none !important;
-}
-
-@keyframes OpacityWobble {
-	0% {filter: opacity(1);}
-	50% {filter: opacity(0.8);}
-	100% {filter: opacity(1);}
+	background-color: var(--button-active-bg);
+	animation: none;
 }
 
 .github-corner {
@@ -84,6 +90,7 @@ a.button:active {
 	width: 40px;
 	height: 40px;
 	z-index: 1000;
+	transition: filter 0.1s linear;
 }
 
 .github-corner img {
@@ -92,19 +99,11 @@ a.button:active {
 	height: 100%;
 	top: 0;
 	left: 0;
-	transition: opacity 0.3s;
 }
-
-.github-corner img.hover {
-	opacity: 0;
-}
-
+	
 @media (hover: hover) {
-	.github-corner:hover img.hover {
-		opacity: 1;
-	}
-	.github-corner:hover img.default {
-		opacity: 0;
+	.github-corner:hover {
+	filter: brightness(0.3);
 	}
 }
 
@@ -121,27 +120,49 @@ a.button:active {
 	}
 }
 
-
-
-@media (hover: none) {
-	.logo{
-		transition: none;
+@media (max-width: 400px) {
+	h1 {
+		font-size: 16px;
 	}
-
-	.logo.spin {
-		animation: tapSpin 5s ease-in-out;
-		animation-fill-mode: forwards;
-	}
-	@keyframes tapSpin {
-		0%   { transform: rotate(0deg); filter: blur(0); }
-		50%  { transform: rotate(4320deg); filter: blur(64px); }
-		100% { transform: rotate(0deg); filter: blur(0); }
+	a.button {
+		font-size: 14px;
+		padding: 8px 12px;
 	}
 }
 
-@media (hover: hover) {
+@media (hover: none) {
+	.logo {
+		transition: none;
+	}
+	.logo.spin {
+		animation: tapSpin 2s ease-in-out forwards;
+	}
+}
+
+/* @media (hover: hover) {
 	.logo.spin {
 		animation: none;
 	}
+} */
+
+@keyframes tapSpin {
+	0% {
+		transform: rotate(0deg);
+		filter: blur(0);
+	}
+	50% {
+		transform: rotate(720deg);
+		filter: blur(var(--blur-amount));
+	}
+	100% {
+		transform: rotate(0deg);
+		filter: blur(0);
+	}
 }
 
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation: none !important;
+		transition: none !important;
+	}
+}
