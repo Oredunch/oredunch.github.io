@@ -1,24 +1,22 @@
-const logo=document.querySelector('.logo');
-let isSpinning=false;
+const logo = document.querySelector('.logo');
+let isSpinning = false;
 
-if(window.matchMedia('(hover: none)').matches){
-  logo.addEventListener('touchstart',e=>{
-    e.preventDefault();//prevent scroll
-    if(isSpinning)return;
-    isSpinning=true;
-    logo.style.filter='none';
-    logo.style.transform='none';
-    void logo.offsetWidth;//reflow
-    logo.classList.add('spin');
-  },{passive:false});
-
-  logo.addEventListener('animationend',()=>{
-    isSpinning=false;
-    logo.classList.remove('spin');
-    logo.style.filter='none';
-    logo.style.transform='none';
-  });
+function spinLogo(e) {
+	e.preventDefault();
+	if (isSpinning) return;
+	isSpinning = true;
+	logo.style.filter = 'none';
+	logo.style.transform = 'none';
+	void logo.offsetWidth;
+	logo.classList.add('spin');
 }
 
+function endSpin() {
+	isSpinning = false;
+	logo.classList.remove('spin');
+	logo.style.filter = 'drop-shadow(5px 15px 5px #000A)';
+	logo.style.transform = 'none';
+}
 
-//this was so hard and frustrating im never doing this again
+logo.addEventListener('click', spinLogo);
+logo.addEventListener('animationend', endSpin);

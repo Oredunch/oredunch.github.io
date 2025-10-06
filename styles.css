@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-	--bg-color: #181414;
+	--bg-color: #0f0a0a;
 	--text-color: #00ffff;
 	--button-bg: #333333;
 	--button-hover-bg: #555555;
@@ -10,13 +10,14 @@
 	--blur-amount: 64px;
 }
 
-html, body {
+html,
+body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	height: 100%;
 	font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-	background-color: var(--bg-color);
+	background: linear-gradient(35deg, var(--bg-color), #222);
 	color: var(--text-color);
 	overflow: hidden;
 }
@@ -36,19 +37,14 @@ html, body {
 }
 
 .logo {
+	filter: drop-shadow(5px 15px 5px #000A);
 	will-change: transform, filter;
 	width: 150px;
 	display: block;
 	margin: 0 auto;
+	cursor: pointer;
 	transform-origin: center;
 	transition: transform 2s ease-in-out, filter 2s ease-in-out;
-}
-
-@media (hover: hover) {
-	.logo:hover {
-		transform: rotate(1440deg);
-		filter: blur(var(--blur-amount)) hue-rotate(360deg);
-	}
 }
 
 h1 {
@@ -56,6 +52,7 @@ h1 {
 	margin: 10px 0;
 	font-size: 36px;
 	white-space: nowrap;
+	filter: drop-shadow(3px 3px 5px #000A);
 }
 
 a.button {
@@ -100,10 +97,10 @@ a.button:active {
 	top: 0;
 	left: 0;
 }
-	
+
 @media (hover: hover) {
 	.github-corner:hover {
-	filter: brightness(0.3);
+		filter: brightness(0.3);
 	}
 }
 
@@ -111,9 +108,11 @@ a.button:active {
 	.logo {
 		width: 60%;
 	}
+
 	h1 {
 		font-size: 20px;
 	}
+
 	a.button {
 		font-size: 16px;
 		padding: 10px 16px;
@@ -124,39 +123,40 @@ a.button:active {
 	h1 {
 		font-size: 16px;
 	}
+
 	a.button {
 		font-size: 14px;
 		padding: 8px 12px;
 	}
 }
 
-@media (hover: none) {
-	.logo {
-		transition: none;
-	}
-	.logo.spin {
-		animation: tapSpin 2s ease-in-out forwards;
-	}
+.logo.spin {
+	animation: tapSpin 2s ease-in-out forwards;
 }
-
-/* @media (hover: hover) {
-	.logo.spin {
-		animation: none;
-	}
-} */
 
 @keyframes tapSpin {
 	0% {
 		transform: rotate(0deg);
-		filter: blur(0);
+		filter: drop-shadow(5px 15px 5px #000A) blur(0);
 	}
+
+	10% {
+		filter: drop-shadow(5px 15px 5px #0000) blur(0);
+	}
+
 	50% {
 		transform: rotate(720deg);
-		filter: blur(var(--blur-amount));
+		filter: drop-shadow(5px 15px 5px #0000) blur(var(--blur-amount));
 	}
-	100% {
+
+	90% {
 		transform: rotate(0deg);
-		filter: blur(0);
+		filter: drop-shadow(5px 15px 5px #0000) blur(0);
+	}
+
+
+	100% {
+		filter: drop-shadow(5px 15px 5px #000A) blur(0);
 	}
 }
 
