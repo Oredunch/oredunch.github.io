@@ -7,8 +7,10 @@
 	--button-hover-bg: #555555;
 	--button-active-bg: #040404;
 	--button-text-color: #ffffff;
-	--blur-amount: 64px;
+	--blur-amount: 8px;
 }
+
+
 
 html,
 body {
@@ -43,15 +45,15 @@ body {
 }
 
 .logo {
+	will-change: transform, filter;
 	display: block;
 	filter: drop-shadow(0px 0px 10px #07556955);
-	will-change: transform, filter;
 	width: 150px;
 	display: block;
 	margin: 0 auto;
-	cursor: pointer;
+	cursor: help;
 	transform-origin: center;
-	transition: transform 2s ease-in-out, filter 2s ease-in-out;
+	transition: transform 5s ease-in-out, filter 5s ease-in-out;
 }
 
 .separator {
@@ -149,29 +151,32 @@ a.button.activated {
 }
 
 .logo.spin {
-	animation: tapSpin 2s ease-in-out forwards;
+	will-change: transform, filter;
+	cursor: default;
+	z-index: 10;
+	animation: tapSpin 5s ease forwards;
 }
 
 @keyframes tapSpin {
 
-	0%,
-	100% {
-		transform: rotate(0deg);
-		filter: drop-shadow(0px 0px 10px #07556955) blur(0px);
+	0% {
+		transform: rotate(0deg) scale(100%);
+		filter: drop-shadow(0px 0px 10px #07556955) blur(0px) hue-rotate(0deg);
 	}
 
-	10% {
-		filter: drop-shadow(5px 15px 5px #0000);
+	25% {
+		transform: rotate(0deg) scale(50%);
+		filter: drop-shadow(0px 0px 0px #0000) blur(var(--blur-amount)) hue-rotate(30deg);
 	}
 
 	50% {
-		transform: rotate(720deg);
-		filter: drop-shadow(0px 0px #0000) blur(var(--blur-amount));
+		transform: rotate(360deg) scale(500%);
+		filter: drop-shadow(0px 0px var(--blur-amount) #0FFF) blur(var(--blur-amount)) hue-rotate(60deg);
 	}
 
-	90% {
-		transform: rotate(0deg);
-		filter: drop-shadow(0px 0px 10px #07556955);
+	100% {
+		transform: rotate(360deg) scale(100%);
+		filter: drop-shadow(0px 0px 10px #07556955) blur(0px) hue-rotate(0deg);
 	}
 
 }
