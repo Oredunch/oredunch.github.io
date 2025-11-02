@@ -23,8 +23,8 @@ body {
 	height: 100%;
 	font-family: 'Doto', sans-serif;
 	background: linear-gradient(35deg, var(--bg-color), #222);
+	overscroll-behavior: none;
 	color: var(--text-color);
-	overflow: hidden;
 }
 
 .center {
