@@ -1,3 +1,5 @@
+const channelId = 'UCalSUGPb30MGEAxrIo-_QNw';
+const apiKey = 'AIzaSyCG8PiclemQWUHJ6XCRMHenk7n5QCBYcrA'; //bro push .env to github
 const logo = document.querySelector('.logo');
 const button = document.getElementById('button');
 const samName = document.getElementById('name');
@@ -5,6 +7,12 @@ const videoBackground = document.getElementById('back-anim');
 const videoPrefsCheck = document.getElementById('video-check');
 const indicatorBlob = document.getElementById('video-check-indicator');
 const tellText = document.getElementById('telltext');
+const infoTab = document.getElementById("info-tab");
+const infoToggle = document.getElementById("info-toggle");
+const popLabel = document.getElementById("pop-label");
+
+const line1 = document.getElementById("labelline");
+const line2 = document.getElementById("labelline2");
 
 var isSpinning = false;
 var imaginary = 0;
@@ -39,6 +47,12 @@ function nameTypeWrite() {
 	}
 }
 
+function popOut() {
+	infoTab.classList.toggle('poppedout', !infoToggle.checked);
+	line1.classList.toggle('down', !infoToggle.checked);
+	line2.classList.toggle('down2', !infoToggle.checked);
+}
+
 function updateVideoStuffs() {
 	videoBackground.classList.toggle('no-opacity', !videoPrefsCheck.checked);
 	setTimeout(() => {
@@ -66,6 +80,7 @@ logo.addEventListener('animationend', endSpin);
 button.addEventListener('touchstart', buttonEffect);
 samName.addEventListener('click', randomizeColor);
 videoPrefsCheck.addEventListener('change', updateVideoStuffs);
+infoToggle.addEventListener('change', popOut);
 
 document.addEventListener('DOMContentLoaded', () => {
 	videoPrefsCheck.checked = true;
@@ -73,3 +88,18 @@ document.addEventListener('DOMContentLoaded', () => {
 	indicatorBlob.classList.remove('check-hidden');
 	setTimeout(() => { nameTypeWrite() }, 200);
 });
+
+fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1`)
+	.then(response => response.json())
+	.then(data => {
+		const video = data.items[0];
+		const title = video.snippet.title;
+		const videoId = video.id.videoId;
+		const url = `https://www.youtube.com/watch?v=${videoId}`;
+		document.getElementById('latest-video').innerHTML =
+			`<a href="${url}" target="_blank">${title}</a>`;
+	})
+	.catch(err => {
+		document.getElementById('latest-video').textContent = 'Error loading video.';
+		console.error(err);
+	});
