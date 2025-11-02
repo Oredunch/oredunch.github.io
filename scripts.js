@@ -1,5 +1,3 @@
-const channelId = 'UCalSUGPb30MGEAxrIo-_QNw';
-const apiKey = 'AIzaSyCG8PiclemQWUHJ6XCRMHenk7n5QCBYcrA'; //bro push .env to github
 const logo = document.querySelector('.logo');
 const button = document.getElementById('button');
 const samName = document.getElementById('name');
@@ -89,15 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	setTimeout(() => { nameTypeWrite() }, 200);
 });
 
-fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1`)
-	.then(response => response.json())
+fetch('/latest-video.json')
+	.then(res => res.json())
 	.then(data => {
-		const video = data.items[0];
-		const title = video.snippet.title;
-		const videoId = video.id.videoId;
-		const url = `https://www.youtube.com/watch?v=${videoId}`;
-		document.getElementById('latest-video').innerHTML =
-			`<a href="${url}" target="_blank">${title}</a>`;
+		const url = `https://www.youtube.com/watch?v=${data.videoId}`;
+		document.getElementById('latest-video').innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
 	})
 	.catch(err => {
 		document.getElementById('latest-video').textContent = 'Error loading video.';
