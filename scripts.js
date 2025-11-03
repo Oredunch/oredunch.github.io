@@ -8,9 +8,13 @@ const tellText = document.getElementById('telltext');
 const infoTab = document.getElementById("info-tab");
 const infoToggle = document.getElementById("info-toggle");
 const popLabel = document.getElementById("pop-label");
+const centerPrimary = document.getElementById("center-1");
+const clickSpace = document.getElementById("clickspace");
 
 const line1 = document.getElementById("labelline");
 const line2 = document.getElementById("labelline2");
+
+const videoInfo = document.getElementById('latest-video');
 
 var isSpinning = false;
 var imaginary = 0;
@@ -47,8 +51,21 @@ function nameTypeWrite() {
 
 function popOut() {
 	infoTab.classList.toggle('poppedout', !infoToggle.checked);
+	centerPrimary.classList.toggle('minimized', !infoToggle.checked);
 	line1.classList.toggle('down', !infoToggle.checked);
 	line2.classList.toggle('down2', !infoToggle.checked);
+	clickSpace.classList.toggle('disabled', !infoToggle.checked == false);
+}
+
+function clickToReturn() {
+	setTimeout(() => {
+		infoToggle.checked = true;
+		infoTab.classList.toggle('poppedout', !infoToggle.checked);
+		centerPrimary.classList.toggle('minimized', !infoToggle.checked);
+		line1.classList.toggle('down', !infoToggle.checked);
+		line2.classList.toggle('down2', !infoToggle.checked);
+		clickSpace.classList.toggle('disabled', !infoToggle.checked == false);
+	}, 100);
 }
 
 function updateVideoStuffs() {
@@ -79,8 +96,11 @@ button.addEventListener('touchstart', buttonEffect);
 samName.addEventListener('click', randomizeColor);
 videoPrefsCheck.addEventListener('change', updateVideoStuffs);
 infoToggle.addEventListener('change', popOut);
+clickSpace.addEventListener('touchstart', clickToReturn);
 
 document.addEventListener('DOMContentLoaded', () => {
+	clickSpace.classList.add('disabled');
+	infoToggle.checked = true;
 	videoPrefsCheck.checked = true;
 	videoBackground.classList.remove('b-a-hidden');
 	indicatorBlob.classList.remove('check-hidden');
@@ -91,9 +111,14 @@ fetch('/latest-video.json')
 	.then(res => res.json())
 	.then(data => {
 		const url = `https://www.youtube.com/watch?v=${data.videoId}`;
-		document.getElementById('latest-video').innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
+		videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
+		if (data.title == "") {
+			videoInfo.innerHTML = "Error Loading";
+			videoInfo.classList.add('error-format');
+			
+		}
 	})
 	.catch(err => {
-		document.getElementById('latest-video').textContent = 'Error loading video.';
+		videoInfo.textContent = 'Error loading video.';
 		console.error(err);
 	});
