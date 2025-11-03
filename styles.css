@@ -4,6 +4,7 @@
 :root {
 	--bg-color: #090707;
 	--bg-color_target: #1a2324;
+	--sam-color: #00ffff;
 	--text-color: #00ffff;
 	--info_text-color: #9db9bd;
 	--text-color_dark: #0AA;
@@ -49,8 +50,12 @@
 
 }
 
+
+
 html,
 body {
+	will-change: opacity;
+	opacity: 0%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -63,6 +68,11 @@ body {
 	text-rendering: optimizeLegibility;
 	overscroll-behavior: none;
 	color: var(--text-color);
+	transition: opacity 0.8s ease-in;
+}
+
+.opaq {
+	opacity: 100%;
 }
 
 .background-animation {
@@ -164,6 +174,7 @@ h1 {
 	margin: 10px 0;
 	font-size: 36px;
 	white-space: nowrap;
+	color: var(--sam-color);
 	filter: drop-shadow(0px 0px 5px var(--text-color));
 	transition: color 0.1s ease-in-out;
 	user-select: none;
@@ -212,13 +223,14 @@ h1 {
 
 a.button {
 	will-change: background-color, font-size;
+	font-family: 'Tektur', sans-serif;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	height: 32px;
 	width: 256px;
 	background-color: var(--button-bg);
-	color: var(--button-text-color);
+	color: var(--text-color);
 	text-decoration: none;
 	border-radius: 32px;
 	font-size: 20px;
@@ -269,19 +281,22 @@ label.button {
 		align-items: center;
 		justify-content: center;
 		background-color: var(--base-element);
-		width: auto;
+		width: 256px;
 		height: 152px;
 		border-radius: 8px;
 		border: 1px solid var(--text-color_dark);
 		backdrop-filter: blur(16px);
 		box-shadow: 0px 0px 4px var(--text-color_dark);
 		z-index: 0;
-		transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+		transform: scaleX(0.5);
+		transition: width 0.5s ease-in-out, transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 	}
 
 	.center2.poppedout {
 		position: absolute;
-		transform: translateY(-256px);
+		width: 512px;
+		border-radius: 8px 8px 0px 0px;
+		transform: translateY(-98%);
 		opacity: 100%;
 	}
 
@@ -300,6 +315,15 @@ label.button {
 	cursor: pointer;
 }
 
+.inline-emoji {
+	display: inline-block;
+	width: 24px;
+	height: auto;
+	margin-left: 8px;
+	line-height: 2px;
+	opacity: 90%;
+}
+
 .disabled {
 	display: none;
 	pointer-events: none;
@@ -307,9 +331,9 @@ label.button {
 
 @media (max-width: 768px) {
 
-	.minimized{
-	transform: scale(50%);
-	opacity: 75%;
+	.minimized {
+		transform: scale(50%);
+		opacity: 75%;
 	}
 
 	.span-p,
@@ -318,6 +342,7 @@ label.button {
 	.animation-check-top-left .checkbox-label .checkbox-check-indicator {
 		display: none;
 		opacity: 0;
+		user-select: none;
 	}
 
 	.center2 {
@@ -494,4 +519,8 @@ a.button.activated {
 
 .checkbox-1 {
 	appearance: none;
+}
+
+.underline {
+	text-decoration: underline;
 }
