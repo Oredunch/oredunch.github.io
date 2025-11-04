@@ -130,20 +130,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	}, 250);
 });
 
-fetch('/latest-video.json')
-  .then(res => res.json())
-  .then(data => {
-    if (!data.videoId) {
-      videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error.">&#10007; Error loading video.</p>`;
-      videoInfo.classList.remove('ax');
-      return;
-    }
-
-    const url = `https://www.youtube.com/watch?v=${data.videoId}`;
-    videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
-  })
-  .catch(err => {
-    videoInfo.textContent = 'Error loading video.';
-    console.error(err);
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  const videoInfo = document.getElementById('latest-video');
+  fetch('/latest-video.json')
+    .then(res => res.json())
+    .then(data => {
+      if (!data.videoId) {
+        videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error.">&#10007; Error loading video.</p>`;
+        videoInfo.classList.remove('ax');
+        return;
+      }
+      const url = `https://www.youtube.com/watch?v=${data.videoId}`;
+      videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
+    })
+    .catch(err => {
+      videoInfo.textContent = 'Error loading video.';
+      console.error(err);
+    });
+});
 
