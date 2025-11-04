@@ -135,7 +135,7 @@ fetch('/latest-video.json')
 	.then(data => {
 		const url = `https://www.youtube.com/watch?v=${data.videoId}`;
 		videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
-		if (data.title == "") {
+		if (data.title == "" || data.title == "undefined") {
 			videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error." >&#10007; Error loading video.</p>`;
 			videoInfo.classList.remove('ax');
 
