@@ -131,17 +131,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 fetch('/latest-video.json')
-	.then(res => res.json())
-	.then(data => {
-		const url = `https://www.youtube.com/watch?v=${data.videoId}`;
-		videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
-		if (data.title == "" || data.title == "undefined") {
-			videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error." >&#10007; Error loading video.</p>`;
-			videoInfo.classList.remove('ax');
+  .then(res => res.json())
+  .then(data => {
+    if (!data.videoId) {
+      videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error.">&#10007; Error loading video.</p>`;
+      videoInfo.classList.remove('ax');
+      return;
+    }
 
-		}
-	})
-	.catch(err => {
-		videoInfo.textContent = 'Error loading video.';
-		console.error(err);
-	});
+    const url = `https://www.youtube.com/watch?v=${data.videoId}`;
+    videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
+  })
+  .catch(err => {
+    videoInfo.textContent = 'Error loading video.';
+    console.error(err);
+  });
+
