@@ -25,10 +25,13 @@ jobs:
           npm install node-fetch@2
           node fetch-latest.js
 
-      - name: Commit and push
+      - name: Commit and push changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+          git fetch origin main
+          git merge origin/main --strategy-option ours
           git add latest-video.json
           git commit -m "Update latest video" || echo "No changes"
-          git push
+          git push origin HEAD:main
+
