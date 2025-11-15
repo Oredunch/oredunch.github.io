@@ -12,6 +12,7 @@
 	--button-hover-bg: #555555;
 	--base-element: #040404b5;
 	--button-text-color: #ffffff;
+  --uiGrey: #6f6f6f;
 	--blur-amount: 8px;
 }
 
@@ -46,7 +47,6 @@
 	50% {
 		filter: brightness(50%)
 	}
-
 
 }
 
@@ -190,7 +190,7 @@ h1 {
 .line {
 	display: block;
 	position: relative;
-	background-color: var(--text-color);
+	background-color: var(--uiGrey);
 	top: 2px;
 	width: 16px;
 	height: 2px;
@@ -202,7 +202,7 @@ h1 {
 .line2 {
 	display: block;
 	position: relative;
-	background-color: var(--text-color);
+	background-color: var(--uiGrey);
 	top: 2px;
 	width: 16px;
 	height: 2px;
@@ -214,11 +214,13 @@ h1 {
 .down {
 	transform: rotate(45deg) translateX(4px);
 	top: -2px;
+  background-color: var(--text-color);
 }
 
 .down2 {
 	transform: rotate(-45deg) translateX(-4px);
 	top: -2px;
+  background-color: var(--text-color);
 }
 
 a.button {
