@@ -12,7 +12,7 @@
 	--button-hover-bg: #555555;
 	--base-element: #040404b5;
 	--button-text-color: #ffffff;
-  --uiGrey: #6f6f6f;
+    --uiGrey: #6f6f6f;
 	--blur-amount: 8px;
 }
 
@@ -526,4 +526,5 @@ a.button.activated {
 .underline {
 	text-decoration: underline;
 }
+
 
