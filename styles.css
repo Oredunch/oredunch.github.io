@@ -291,7 +291,7 @@ label.button {
 		box-shadow: 0px 0px 4px var(--text-color_dark);
 		z-index: 0;
 		transform: scaleX(0.5);
-		transition: width 0.5s ease-in-out, transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+		transition: width 0.1s ease-in-out, transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
 	}
 
 	.center2.poppedout {
@@ -526,3 +526,4 @@ a.button.activated {
 .underline {
 	text-decoration: underline;
 }
+
