@@ -1,9 +1,6 @@
 const logo = document.querySelector('.logo');
 const button = document.getElementById('button');
 const samName = document.getElementById('name');
-const videoBackground = document.getElementById('back-anim');
-const videoPrefsCheck = document.getElementById('video-check');
-const indicatorBlob = document.getElementById('video-check-indicator');
 const tellText = document.getElementById('telltext');
 const infoTab = document.getElementById("info-tab");
 const infoToggle = document.getElementById("info-toggle");
@@ -12,9 +9,9 @@ const centerPrimary = document.getElementById("center-1");
 const clickSpace = document.getElementById("clickspace");
 const htmlEl = document.documentElement;
 const bodyEl = document.body;
+const close = document.getElementById("close");
 
-const line1 = document.getElementById("labelline");
-const line2 = document.getElementById("labelline2");
+const popoutIndicator = document.getElementById("arrow");
 
 const videoInfo = document.getElementById('latest-video');
 
@@ -71,8 +68,7 @@ function flashUnderLine() {
 function popOut() {
 	infoTab.classList.toggle('poppedout', !infoToggle.checked);
 	centerPrimary.classList.toggle('minimized', !infoToggle.checked);
-	line1.classList.toggle('down', !infoToggle.checked);
-	line2.classList.toggle('down2', !infoToggle.checked);
+	popoutIndicator.classList.toggle('down', !infoToggle.checked);
 	clickSpace.classList.toggle('disabled', !infoToggle.checked == false);
 }
 
@@ -81,18 +77,9 @@ function clickToReturn() {
 		infoToggle.checked = true;
 		infoTab.classList.toggle('poppedout', !infoToggle.checked);
 		centerPrimary.classList.toggle('minimized', !infoToggle.checked);
-		line1.classList.toggle('down', !infoToggle.checked);
-		line2.classList.toggle('down2', !infoToggle.checked);
+		popoutIndicator.classList.toggle('down', !infoToggle.checked);
 		clickSpace.classList.toggle('disabled', !infoToggle.checked == false);
 	}, 100);
-}
-
-function updateVideoStuffs() {
-	videoBackground.classList.toggle('no-opacity', !videoPrefsCheck.checked);
-	setTimeout(() => {
-		videoBackground.classList.toggle('b-a-hidden', !videoPrefsCheck.checked);
-	}, 500);
-	indicatorBlob.classList.toggle('check-hidden', !videoPrefsCheck.checked);
 }
 
 function randomizeColor() {
@@ -114,18 +101,15 @@ logo.addEventListener('animationend', endSpin);
 button.addEventListener('touchstart', buttonEffect);
 samName.addEventListener('click', randomizeColor);
 samName.addEventListener('aftertypewrite', flashUnderLine);
-videoPrefsCheck.addEventListener('change', updateVideoStuffs);
 infoToggle.addEventListener('change', popOut);
+close.addEventListener('click', clickToReturn)
 clickSpace.addEventListener('touchstart', clickToReturn);
 
 document.addEventListener('DOMContentLoaded', () => {
 	showPage();
 	setTimeout(() => {
 		infoToggle.checked = true;
-		videoPrefsCheck.checked = true;
 		clickSpace.classList.add('disabled');
-		videoBackground.classList.remove('b-a-hidden');
-		indicatorBlob.classList.remove('check-hidden');
 		setTimeout(() => { nameTypeWrite(); }, 200);
 	}, 250);
 });

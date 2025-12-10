@@ -14,17 +14,11 @@
 	<div id="clickspace" class="empty-clickspace"></div>
 
 	<div id="back-anim" class="background-animation">
-		<video src="images/HexGrid_Low-BR.webm" autoplay loop></video>
+		<video src="images/HexGrid_Low-BR.webm" autoplay loop mute></video>
 	</div>
-
-	<div class="animation-check-top-left">
-		<input class="checkbox-1" id="video-check" type="checkbox" checked>
-		<label class="checkbox-label" for="video-check">
-			<span id="video-check-indicator" class="checkbox-check-indicator"></span>
-		</label>
-		<span id="telltext" class="span-p">enable video background</span>
+	<div id="back-anim" class="background-still">
+		<img src="images/HexGrid_Still.png">
 	</div>
-
 
 	<div id="center-1" class="center">
 		<div class="logo">
@@ -40,14 +34,45 @@
 			</a>
 			<input type="checkbox" class="checkbox-1" name="pop out" id="info-toggle">
 			<label id="pop-label" for="info-toggle" class="button">
-				<div id="labelline" class="line"></div>
-				<div id="labelline2" class="line2"></div>
+				<span id="arrow" class="popout-indicator">
+					    <svg
+							width="48"
+							height="48"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M3 16 L12 7 L21 16"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+				</span>
 			</label>
 		</div>
 	</div>
 	<div id="info-tab" class="center2">
 		<h2 class="padding">Newest video</h2>
 		<span class="youtube-span ab ax" id="latest-video"></span>
+		<button id="close" class="button pad bl">
+			<svg
+				width="48"
+				height="48"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M6 6 L18 18 M6 18 L18 6"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+		</button>
 	</div>
 
 	<script src="scripts.js"></script>
