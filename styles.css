@@ -62,7 +62,6 @@
 
 html,
 body {
-	will-change: opacity;
 	opacity: 0%;
 	display: flex;
 	align-items: center;
@@ -85,7 +84,6 @@ body {
 
 .background-animation, .background-still {
 	display: flex;
-	will-change: opacity;
 	position: absolute;
 	align-items: center;
 	width: 100%;
@@ -150,7 +148,6 @@ body {
 }
 
 .logo {
-	will-change: transform, filter, opacity;
 	display: block;
 	/* filter: drop-shadow(0px 0px 32px #07556933); */
 	width: 150px;
@@ -171,7 +168,6 @@ body {
 
 
 h1 {
-	will-change: color;
 	margin: 10px 0;
 	font-weight: 600;
 	font-family: 'Doto', sans-serif;
@@ -195,7 +191,6 @@ h1 {
 	align-items: center;
 	justify-content: center;
 	width: 32px;
-	will-change: transform, color;
 	transform: translateZ(0);
 	color: var(--text-color);
 	transition: transform 0.1s ease-in, color 0.1s ease-in;
@@ -215,7 +210,6 @@ h1 {
 }
 
 button.button, a.button {
-	will-change: background-color;
 	font-family: 'Tektur', sans-serif;
 	height: 32px;
 	width: 256px;
@@ -229,7 +223,6 @@ button.button, a.button {
 }
 
 label.button {
-	will-change: background-color;
 	height: 32px;
 	width: 64px;
 	background-color: var(--button-bg);
@@ -360,7 +353,6 @@ label.button {
 	}
 
 	.center {
-		will-change: transform;
 		flex-direction: column;
 		max-width: 332px;
 		min-height: 664px;
@@ -411,7 +403,6 @@ a.button.activated {
 }
 
 .logo.spin {
-	will-change: transform, filter, opacity;
 	cursor: default;
 	z-index: 10;
 	animation: tapSpin 2s ease forwards;
@@ -506,5 +497,6 @@ a.button.activated {
 .underline {
 	text-decoration: underline;
 }
+
 
 
