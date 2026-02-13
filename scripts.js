@@ -29,8 +29,9 @@ eventTw.initEvent("aftertypewrite", true, true);
 
 function showPage() {
 	coverUp.classList.add('opaq');
+	setTimeout(() => { coverUp.classList.add('disabled'); }, 850);
 }
-
+ 
 function spinLogo() { // Its not a spin animation anymore tho but whatever
 	if (isSpinning) return;
 	isSpinning = true;
@@ -68,7 +69,7 @@ function popOut() {
 	centerPrimary.classList.toggle('minimized', !infoToggle.checked);
 	popoutIndicator.classList.toggle('down', !infoToggle.checked);
 	popLabel.classList.toggle('active', !infoToggle.checked);
-	clickSpace.classList.toggle('disabled', !infoToggle.checked == false);
+	clickSpace.classList.toggle('disabled', infoToggle.checked);
 }
 
 function clickToReturn() {
