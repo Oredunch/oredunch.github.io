@@ -27,11 +27,12 @@
 
 #cover {
 	position: absolute;
-	width: 110%
+	width: 110%;
 	height: 110%;
 	background-color: var(--bg-color);
 	opacity: 100%;
 	transition: opacity 0.8s var(--bezier);
+	z-index: 420;
 }
 
 
@@ -533,4 +534,5 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
 
