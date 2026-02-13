@@ -10,6 +10,7 @@ const clickSpace = document.getElementById("clickspace");
 const htmlEl = document.documentElement;
 const bodyEl = document.body;
 const close = document.getElementById("close");
+const coverUp = document.getElementById("cover");
 
 const popoutIndicator = document.getElementById("arrow");
 
@@ -27,8 +28,7 @@ const eventTw = document.createEvent("Event");
 eventTw.initEvent("aftertypewrite", true, true);
 
 function showPage() {
-	htmlEl.classList.add('opaq');
-	bodyEl.classList.add('opaq');
+	coverUp.classList.add('opaq');
 }
 
 function spinLogo() { // Its not a spin animation anymore tho but whatever
