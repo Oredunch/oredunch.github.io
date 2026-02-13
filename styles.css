@@ -25,6 +25,14 @@
 	padding: 0px 16px 0px 16px;
 }
 
+#cover {
+	position: absolute;
+	width: 110%
+	height: 110%;
+	background-color: var(--bg-color);
+	opacity: 100%;
+	transition: opacity 0.8s var(--bezier);
+}
 
 
 .pad {
@@ -76,8 +84,8 @@ body {
 	background: linear-gradient(345deg, var(--bg-color), var(--bg-color_target));
 	text-rendering: optimizeLegibility;
 	overscroll-behavior: none;
+	overflow: hidden;
 	color: var(--text-color);
-	transition: opacity 0.8s var(--bezier);
 }
 
 .opaq {
@@ -525,3 +533,4 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
