@@ -25,7 +25,7 @@
 	padding: 0px 16px 0px 16px;
 }
 
-#cover {
+.cover {
 	position: absolute;
 	width: 110%;
 	height: 110%;
@@ -534,5 +534,6 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
 
 
