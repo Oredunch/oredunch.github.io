@@ -28,7 +28,7 @@ const eventTw = document.createEvent("Event");
 eventTw.initEvent("aftertypewrite", true, true);
 
 function showPage() {
-	setTimeout(() => { coverUp.classList.add('opaq'); }, 100};
+	setTimeout(() => { coverUp.classList.add('opaq'); }, 100);
 	setTimeout(() => { coverUp.classList.add('disabled'); }, 1500);
 }
  
