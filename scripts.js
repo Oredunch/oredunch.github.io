@@ -28,8 +28,8 @@ const eventTw = document.createEvent("Event");
 eventTw.initEvent("aftertypewrite", true, true);
 
 function showPage() {
-	coverUp.classList.add('opaq');
-	setTimeout(() => { coverUp.classList.add('disabled'); }, 850);
+	setTimeout(() => { coverUp.classList.add('opaq'); }, 100};
+	setTimeout(() => { coverUp.classList.add('disabled'); }, 1500);
 }
  
 function spinLogo() { // Its not a spin animation anymore tho but whatever
