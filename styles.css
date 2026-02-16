@@ -66,7 +66,6 @@
 	50% {
 		filter: brightness(50%)
 	}
-
 }
 
 html,
@@ -119,9 +118,27 @@ body {
 }
 
 .visible {
-	opacity: 100;
+	opacity: 100%	;
 }
 
+.error-message {
+  position: absolute;
+  bottom: 8px;
+  right: 8px; 
+  padding: 4px 8px;
+  font-size: 12px;
+  background-color: red;
+  color: white;
+  border-radius: 4px;
+  transform: translateX(150%); 
+  transition: transform 0.5s ease;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.error-message-active {
+  transform: translateX(0); 
+}
 
 .center {
 	display: flex;
@@ -446,39 +463,34 @@ a.button.activated {
 }
 
 .spin {
-	will-change: transform, filter, opacity;
+	will-change: transform, opacity;
 	cursor: default;
 	z-index: 10;
 	animation: tapSpin 2s ease forwards;
 }
 
-@keyframes tapSpin {
-
+	@keyframes tapSpin {
 	0% {
-		transform: scale(1.0) rotateY(0deg);
-		opacity: 100%;
+		transform: scale(1) rotateY(0deg);
+		opacity: 1;
 	}
-
-	25% {
-		transform: scale() rotateY();
-		opacity: 75%;
-	}
-
+	
 	50% {
-		transform: scale(0.5) rotateY(360deg);
-		opacity: 0%;
+		transform: scale(0.5) rotateY(180deg);
+		opacity: 0;
 	}
 
 	75% {
-		transform: scale() rotateY(720deg);
-		opacity: 0%;
+		transform: scale(0.75) rotateY(270deg); 
+		opacity: 0;
 	}
 
 	100% {
-		transform: scale();
-		opacity: 100%;
+		transform: scale(1) rotateY(360deg);
+		opacity: 1;
 	}
-}
+	}
+
 
 @media (prefers-reduced-motion: reduce) {
 	* {

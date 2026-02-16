@@ -1,17 +1,26 @@
-const logo = document.querySelector('.logo');
+const logo = document.getElementById('logo-image');
 const button = document.getElementById('button');
 const samName = document.getElementById('name');
-const tellText = document.getElementById('telltext');
 const infoTab = document.getElementById("info-tab");
 const infoToggle = document.getElementById("info-toggle");
 const popLabel = document.getElementById("pop-label");
 const centerPrimary = document.getElementById("center-1");
 const clickSpace = document.getElementById("clickspace");
-const htmlEl = document.documentElement;
-const bodyEl = document.body;
 const close = document.getElementById("close");
 const coverUp = document.getElementById("cover");
+const errorPanel = document.getElementById("error-message-tab");
+
+
+const htmlEl = document.documentElement;
+const bodyEl = document.body;
+
 const backgroundAnimation = document.getElementById("video-animation");
+const backgroundAnimationVideo = document.getElementById("video-resource");
+
+const backgroundImage = document.getElementById("still-image");
+const backgroundImageImage = document.getElementById("still-image-resource");
+
+
 const popoutIndicator = document.getElementById("arrow");
 const videoInfo = document.getElementById('latest-video');
 
@@ -21,10 +30,6 @@ let isSpinning = false;
 let imaginary = 0;
 const samsName = 'Sammy Oredunchinch';
 const speed = 50;
-
-// Custom event (unused in current code)
-const eventTw = document.createEvent("Event");
-eventTw.initEvent("aftertypewrite", true, true);
 
 function showPage() {
   setTimeout(() => coverUp.classList.add('opaq'), 100);
@@ -44,6 +49,10 @@ function endSpin() {
 
 function showVideo() {
   backgroundAnimation.classList.add("visible");
+}
+
+function showImage() {
+  backgroundImage.classList.add("visible");
 }
 
 function buttonEffect() {
@@ -84,6 +93,19 @@ function clickToReturn() {
   }, 10);
 }
 
+function checkResources() {
+  if (!backgroundAnimation.classList.contains("visible")) {
+    errorPanel.classList.add("error-message-active")
+    errorPanel.textContent = "Video failed to load.";
+    setTimeout(() => { errorPanel.classList.remove("error-message-active");  }, 2500);
+  }
+  if (!backgroundImage.classList.contains("visible")) {
+    errorPanel.classList.add("error-message-active")
+    errorPanel.textContent = "Image failed to load.";
+    setTimeout(() => { errorPanel.classList.remove("error-message-active");  }, 2500);
+  }
+}
+
 function randomizeColor() {
   const textColor = ['#c3c382','#FF00FF','#4ae39eff','#ff0000ff','#c0830aff'];
   document.documentElement.style.setProperty('--sam-color', textColor[Math.floor(Math.random() * textColor.length)]);
@@ -98,7 +120,9 @@ samName.addEventListener('click', randomizeColor);
 infoToggle.addEventListener('change', popOut);
 close.addEventListener('click', clickToReturn);
 clickSpace.addEventListener('touchstart', clickToReturn);
-backgroundAnimation.addEventListener('canplaythrough', showVideo);
+
+backgroundAnimationVideo.addEventListener('canplaythrough', showVideo);
+backgroundImageImage.addEventListener('load', showImage);
 
 document.addEventListener('DOMContentLoaded', () => {
   showPage();
@@ -116,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setTimeout(nameTypeWrite, 200);
+
+    setTimeout(checkResources, 4000);
 
     // Fetch latest video
     fetch('/latest-video.json')
