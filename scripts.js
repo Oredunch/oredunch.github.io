@@ -11,135 +11,128 @@ const htmlEl = document.documentElement;
 const bodyEl = document.body;
 const close = document.getElementById("close");
 const coverUp = document.getElementById("cover");
-
+const backgroundAnimation = document.getElementById("video-animation");
 const popoutIndicator = document.getElementById("arrow");
-
 const videoInfo = document.getElementById('latest-video');
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-var isSpinning = false;
-var imaginary = 0;
-var samsName = 'Sammy Oredunchinch';
-var speed = 50;
+let isSpinning = false;
+let imaginary = 0;
+const samsName = 'Sammy Oredunchinch';
+const speed = 50;
 
+// Custom event (unused in current code)
 const eventTw = document.createEvent("Event");
-
 eventTw.initEvent("aftertypewrite", true, true);
 
 function showPage() {
-	setTimeout(() => { coverUp.classList.add('opaq'); }, 100);
-	setTimeout(() => { coverUp.classList.add('disabled'); }, 1500);
+  setTimeout(() => coverUp.classList.add('opaq'), 100);
+  setTimeout(() => coverUp.classList.add('disabled'), 1500);
 }
- 
-function spinLogo() { // Its not a spin animation anymore tho but whatever
-	if (isSpinning) return;
-	isSpinning = true;
-	logo.classList.add('spin');
+
+function spinLogo() {
+  if (isSpinning) return;
+  isSpinning = true;
+  logo.classList.add('spin');
 }
 
 function endSpin() {
-	isSpinning = false;
-	logo.classList.remove('spin');
+  isSpinning = false;
+  logo.classList.remove('spin');
+}
+
+function showVideo() {
+  backgroundAnimation.classList.add("visible");
 }
 
 function buttonEffect() {
-	button.classList.add('activated');
-	setTimeout(() => {
-		button.classList.remove('activated');
-	}, 10);
-	close.classList.add('active');
-	setTimeout(() => {
-		close.classList.remove('active');
-	}, 10);
+  button.classList.add('activated');
+  setTimeout(() => button.classList.remove('activated'), 10);
+
+  close.classList.add('active');
+  setTimeout(() => close.classList.remove('active'), 10);
 }
 
 function nameTypeWrite() {
-	if (imaginary < samsName.length) {
-		let textArray = samName.textContent.split('');
-		textArray[imaginary] = samsName.charAt(imaginary);
-		samName.textContent = textArray.join('');
-		imaginary++;
-		setTimeout(nameTypeWrite, speed);
-	}
+  if (imaginary < samsName.length) {
+    const textArray = samName.textContent.split('');
+    textArray[imaginary] = samsName.charAt(imaginary);
+    samName.textContent = textArray.join('');
+    imaginary++;
+    setTimeout(nameTypeWrite, speed);
+  }
 }
 
 function popOut() {
-	infoTab.classList.toggle('poppedout', !infoToggle.checked);
-	centerPrimary.classList.toggle('minimized', !infoToggle.checked);
-	popoutIndicator.classList.toggle('down', !infoToggle.checked);
-	popLabel.classList.toggle('active', !infoToggle.checked);
-	clickSpace.classList.toggle('disabled', infoToggle.checked);
+  const popped = !infoToggle.checked;
+  infoTab.classList.toggle('poppedout', popped);
+  centerPrimary.classList.toggle('minimized', popped);
+  popoutIndicator.classList.toggle('down', popped);
+  popLabel.classList.toggle('active', popped);
+  clickSpace.classList.toggle('disabled', infoToggle.checked);
 }
 
 function clickToReturn() {
-	setTimeout(() => {
-		infoToggle.checked = true;
-		infoTab.classList.toggle('poppedout', !infoToggle.checked);
-		centerPrimary.classList.toggle('minimized', !infoToggle.checked);
-		popoutIndicator.classList.toggle('down', !infoToggle.checked);
-		popLabel.classList.remove("active")
-		clickSpace.classList.toggle('disabled', !infoToggle.checked == false);
-	}, 10);
+  setTimeout(() => {
+    infoToggle.checked = true;
+    infoTab.classList.toggle('poppedout', !infoToggle.checked);
+    centerPrimary.classList.toggle('minimized', !infoToggle.checked);
+    popoutIndicator.classList.toggle('down', !infoToggle.checked);
+    popLabel.classList.remove("active");
+    clickSpace.classList.toggle('disabled', infoToggle.checked);
+  }, 10);
 }
 
 function randomizeColor() {
-	const textColor = [
-		'#c3c382',
-		'#FF00FF',
-		'#4ae39eff',
-		'#ff0000ff',
-		'#c0830aff',
-	];
-	document.documentElement.style.setProperty('--sam-color', textColor[Math.floor(Math.random() * textColor.length)]);
-	setTimeout(() => {
-		document.documentElement.style.setProperty('--sam-color', '#00FFFF');
-	}, 1000);
+  const textColor = ['#c3c382','#FF00FF','#4ae39eff','#ff0000ff','#c0830aff'];
+  document.documentElement.style.setProperty('--sam-color', textColor[Math.floor(Math.random() * textColor.length)]);
+  setTimeout(() => document.documentElement.style.setProperty('--sam-color', '#00FFFF'), 1000);
 }
 
+// Event listeners
 logo.addEventListener('click', spinLogo);
 logo.addEventListener('animationend', endSpin);
-button.addEventListener('touchstart', buttonEffect);
+['click', 'touchstart'].forEach(evt => button.addEventListener(evt, buttonEffect));
 samName.addEventListener('click', randomizeColor);
 infoToggle.addEventListener('change', popOut);
-close.addEventListener('click', clickToReturn)
+close.addEventListener('click', clickToReturn);
 clickSpace.addEventListener('touchstart', clickToReturn);
+backgroundAnimation.addEventListener('canplaythrough', showVideo);
 
 document.addEventListener('DOMContentLoaded', () => {
-	showPage();
-	setTimeout(() => {
-		infoToggle.checked = true;
-		clickSpace.classList.add('disabled');
-		if (isMobile) {
-			setTimeout(() => {
-				samName.classList.remove("break-anywhere")
-				document.documentElement.style.setProperty('--sam-color', '#ff0000');
-				setTimeout(() => {
-					document.documentElement.style.setProperty('--sam-color', '#00FFFF');
-				}, 1000);
+  showPage();
 
-			}, 1200);
-		}
-		setTimeout(() => { nameTypeWrite(); }, 200);
-	}, 250);
+  setTimeout(() => {
+    infoToggle.checked = true;
+    clickSpace.classList.add('disabled');
+
+    if (isMobile) {
+      setTimeout(() => {
+        samName.classList.remove("break-anywhere");
+        document.documentElement.style.setProperty('--sam-color', '#ff0000');
+        setTimeout(() => document.documentElement.style.setProperty('--sam-color', '#00FFFF'), 1000);
+      }, 1200);
+    }
+
+    setTimeout(nameTypeWrite, 200);
+
+    // Fetch latest video
+    fetch('/latest-video.json')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.videoId) {
+          videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error.">&#10007; Error loading video.</p>`;
+          videoInfo.classList.remove('ax');
+          return;
+        }
+        const url = `https://www.youtube.com/watch?v=${data.videoId}`;
+        videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
+      })
+      .catch(err => {
+        videoInfo.textContent = 'Error loading video.';
+        console.error(err);
+      });
+
+  }, 250);
 });
-
-document.addEventListener('DOMContentLoaded', () => {
-	const videoInfo = document.getElementById('latest-video');
-	fetch('/latest-video.json')
-		.then(res => res.json())
-		.then(data => {
-			if (!data.videoId) {
-				videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error.">&#10007; Error loading video.</p>`;
-				videoInfo.classList.remove('ax');
-				return;
-			}
-			const url = `https://www.youtube.com/watch?v=${data.videoId}`;
-			videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
-		})
-		.catch(err => {
-			videoInfo.textContent = 'Error loading video.';
-			console.error(err);
-		});
-});
-
