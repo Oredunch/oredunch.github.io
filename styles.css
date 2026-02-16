@@ -69,8 +69,6 @@
 
 }
 
-
-
 html,
 body {
 	will-change: opacity;
@@ -106,7 +104,7 @@ body {
 	overflow: hidden;
 	z-index: 0;
 	transition: opacity 0.5s var(--bezier);
-	opacity: 100%;
+	opacity: 0%;
 }
 
 .background-animation video,
@@ -119,6 +117,11 @@ body {
 	overflow: hidden;
 	user-select: none;
 }
+
+.visible {
+	opacity: 100;
+}
+
 
 .center {
 	display: flex;
@@ -534,6 +537,7 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
 
 
 
