@@ -99,10 +99,10 @@ function checkResources() {
     errorPanel.textContent = "Video failed to load.";
     setTimeout(() => { errorPanel.classList.remove("error-message-active");  }, 2500);
   }
-  if (!backgroundImage.classList.contains("visible")) {
-    errorPanel.classList.add("error-message-active")
+  if (isMobile && !backgroundImage.classList.contains("visible")) {
+    errorPanel.classList.add("error-message-active");
     errorPanel.textContent = "Image failed to load.";
-    setTimeout(() => { errorPanel.classList.remove("error-message-active");  }, 2500);
+    setTimeout(() => errorPanel.classList.remove("error-message-active"), 2500);
   }
 }
 
