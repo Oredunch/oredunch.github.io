@@ -215,6 +215,7 @@ h1 {
 	transition: color 0.1s var(--bezier);
 	user-select: none;
 	cursor: pointer;
+	word-break: break-word;
 }
 
 .error-format {
@@ -553,6 +554,7 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
 
 
 
