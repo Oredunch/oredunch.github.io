@@ -53,7 +53,7 @@
 }
 
 .notice {
-	background-color: #48e2ff;
+	background-color: #48e2ff !important;
 }
 
 .ax:hover {
@@ -122,7 +122,7 @@ body {
 }
 
 .visible {
-	opacity: 100%	;
+	opacity: 100%;
 }
 
 .error-message {
@@ -553,6 +553,7 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
 
 
 
