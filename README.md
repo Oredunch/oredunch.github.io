@@ -1,5 +1,12 @@
 # oredunch.github.io
 
-## A website for a YouTube channel
+This is a small website built to show a YouTube channel's **logo** and **name**.
 
-This is a messy website just to display the logo and name for a YouTube channel
+### Things
+- **YouTube Button** – Opens the channel directly.  
+- **Arrow Button** – Opens a panel that displays the latest video from the channel.
+
+### Coolios
+
+- **Click/press the logo** – It spins.  
+- **Click/press the name** – Brief color-change effect.
