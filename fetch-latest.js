@@ -25,9 +25,9 @@ async function updateLatestVideo() {
 		};
 
 		fs.writeFileSync('latest-video.json', JSON.stringify(json, null, 2));
-		console.log('✅ latest-video.json updated successfully');
+		console.log('s: latest-video.json updated successfully');
 	} catch (err) {
-		console.error('❌', err.message);
+		console.error('e:', err.message);
 		fs.writeFileSync('latest-video.json', JSON.stringify({ error: err.message }, null, 2));
 	} finally {
 		process.exit(0);
