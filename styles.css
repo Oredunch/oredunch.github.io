@@ -54,7 +54,7 @@
 
 .notice {
 	background-color: #48e2ff !important;
-	text-shadow: 0px 0px 4px #00000080 !important;
+	text-shadow: 0px 0px 8px #00000080 !important;
 }
 
 .ax:hover {
@@ -133,6 +133,7 @@ body {
   padding: 4px 8px;
   font-size: 12px;
   background-color: red;
+  box-shadow: 0px 2px 8px #00000040;
   color: white;
   border-radius: 4px;
   transform: translateX(150%); 
@@ -555,6 +556,7 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
 
 
 
