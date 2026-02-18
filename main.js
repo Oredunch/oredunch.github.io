@@ -101,7 +101,7 @@ function clickToReturn() {
 }
 
 function checkResources() {
-  if (!backgroundAnimation.classList.contains('visible')) {
+  if (!isMobile && !backgroundAnimation.classList.contains('visible')) {
     showError('Video failed to load.');
   }
 
