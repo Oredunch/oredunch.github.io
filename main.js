@@ -172,17 +172,19 @@ document.addEventListener('DOMContentLoaded', () => {
     infoToggle.checked = true;
     clickSpace.classList.add('disabled');
 
+
     if (isMobile) {
+      root.style.setProperty('--sam-color', '#ff0000');
       setTimeout(() => {
-        samName.classList.remove('break-anywhere');
-        root.style.setProperty('--sam-color', '#ff0000');
-        setTimeout(() => {
-          root.style.setProperty('--sam-color', DEFAULT_COLOR);
-        }, 1000);
+        root.style.setProperty('--sam-color', DEFAULT_COLOR);
       }, 1200);
     }
 
-    setTimeout(nameTypeWrite, 200);
+    if (!isMobile) {
+      setTimeout(nameTypeWrite, 200);
+    } else {
+      samName.textContent = targetName;
+    }
     setTimeout(checkResources, 4000);
 
     fetch('/latest-video.json')
