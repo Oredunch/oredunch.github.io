@@ -52,6 +52,10 @@
 	animation: shine 2s var(--bezier) infinite;
 }
 
+.notice {
+	background-color: #48e2ff;
+}
+
 .ax:hover {
 	animation: shine 1s var(--bezier) infinite;
 }
@@ -549,6 +553,7 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
 
 
 
