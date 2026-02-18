@@ -1,35 +1,40 @@
 const logo = document.getElementById('logo-image');
 const button = document.getElementById('button');
 const samName = document.getElementById('name');
-const infoTab = document.getElementById("info-tab");
-const infoToggle = document.getElementById("info-toggle");
-const popLabel = document.getElementById("pop-label");
-const centerPrimary = document.getElementById("center-1");
-const clickSpace = document.getElementById("clickspace");
-const close = document.getElementById("close");
-const coverUp = document.getElementById("cover");
-const errorPanel = document.getElementById("error-message-tab");
+const infoTab = document.getElementById('info-tab');
+const infoToggle = document.getElementById('info-toggle');
+const popLabel = document.getElementById('pop-label');
+const centerPrimary = document.getElementById('center-1');
+const clickSpace = document.getElementById('clickspace');
+const closeButton = document.getElementById('close');
+const coverUp = document.getElementById('cover');
+const errorPanel = document.getElementById('error-message-tab');
 
+const backgroundAnimation = document.getElementById('video-animation');
+const backgroundAnimationVideo = document.getElementById('video-resource');
+const backgroundImage = document.getElementById('still-image');
+const backgroundImageImage = document.getElementById('still-image-resource');
 
-const htmlEl = document.documentElement;
-const bodyEl = document.body;
-
-const backgroundAnimation = document.getElementById("video-animation");
-const backgroundAnimationVideo = document.getElementById("video-resource");
-
-const backgroundImage = document.getElementById("still-image");
-const backgroundImageImage = document.getElementById("still-image-resource");
-
-
-const popoutIndicator = document.getElementById("arrow");
+const popoutIndicator = document.getElementById('arrow');
 const videoInfo = document.getElementById('latest-video');
 
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
+const root = document.documentElement;
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
 let isSpinning = false;
-let imaginary = 0;
-const samsName = 'Sammy Oredunchinch';
-const speed = 50;
+let typeIndex = 0;
+
+const targetName = 'Sammy Oredunchinch';
+const typeSpeed = 50;
+const DEFAULT_COLOR = '#00FFFF';
+
+function showError(message) {
+  errorPanel.textContent = message;
+  errorPanel.classList.add('error-message-active');
+  setTimeout(() => {
+    errorPanel.classList.remove('error-message-active');
+  }, 2500);
+}
 
 function showPage() {
   setTimeout(() => coverUp.classList.add('opaq'), 100);
@@ -48,77 +53,83 @@ function endSpin() {
 }
 
 function showVideo() {
-  backgroundAnimation.classList.add("visible");
+  backgroundAnimation.classList.add('visible');
 }
 
 function showImage() {
-  backgroundImage.classList.add("visible");
+  backgroundImage.classList.add('visible');
 }
 
 function buttonEffect() {
   button.classList.add('activated');
-  setTimeout(() => button.classList.remove('activated'), 10);
+  closeButton.classList.add('active');
 
-  close.classList.add('active');
-  setTimeout(() => close.classList.remove('active'), 10);
+  setTimeout(() => {
+    button.classList.remove('activated');
+    closeButton.classList.remove('active');
+  }, 10);
 }
 
 function nameTypeWrite() {
-  if (imaginary < samsName.length) {
-    const textArray = samName.textContent.split('');
-    textArray[imaginary] = samsName.charAt(imaginary);
-    samName.textContent = textArray.join('');
-    imaginary++;
-    setTimeout(nameTypeWrite, speed);
-  }
+  if (typeIndex >= targetName.length) return;
+
+  const chars = samName.textContent.split('');
+  chars[typeIndex] = targetName[typeIndex];
+  samName.textContent = chars.join('');
+
+  typeIndex++;
+  setTimeout(nameTypeWrite, typeSpeed);
+}
+
+function updatePopState(isOpen) {
+  infoTab.classList.toggle('poppedout', isOpen);
+  centerPrimary.classList.toggle('minimized', isOpen);
+  popoutIndicator.classList.toggle('down', isOpen);
+  popLabel.classList.toggle('active', isOpen);
+  clickSpace.classList.toggle('disabled', !isOpen);
 }
 
 function popOut() {
-  const popped = !infoToggle.checked;
-  infoTab.classList.toggle('poppedout', popped);
-  centerPrimary.classList.toggle('minimized', popped);
-  popoutIndicator.classList.toggle('down', popped);
-  popLabel.classList.toggle('active', popped);
-  clickSpace.classList.toggle('disabled', infoToggle.checked);
+  updatePopState(!infoToggle.checked);
 }
 
 function clickToReturn() {
   setTimeout(() => {
     infoToggle.checked = true;
-    infoTab.classList.toggle('poppedout', !infoToggle.checked);
-    centerPrimary.classList.toggle('minimized', !infoToggle.checked);
-    popoutIndicator.classList.toggle('down', !infoToggle.checked);
-    popLabel.classList.remove("active");
-    clickSpace.classList.toggle('disabled', infoToggle.checked);
+    updatePopState(false);
   }, 10);
 }
 
 function checkResources() {
-  if (!backgroundAnimation.classList.contains("visible")) {
-    errorPanel.classList.add("error-message-active")
-    errorPanel.textContent = "Video failed to load.";
-    setTimeout(() => { errorPanel.classList.remove("error-message-active");  }, 2500);
+  if (!backgroundAnimation.classList.contains('visible')) {
+    showError('Video failed to load.');
   }
-  if (isMobile && !backgroundImage.classList.contains("visible")) {
-    errorPanel.classList.add("error-message-active");
-    errorPanel.textContent = "Image failed to load.";
-    setTimeout(() => errorPanel.classList.remove("error-message-active"), 2500);
+
+  if (isMobile && !backgroundImage.classList.contains('visible')) {
+    showError('Image failed to load.');
   }
 }
 
 function randomizeColor() {
-  const textColor = ['#c3c382','#FF00FF','#4ae39eff','#ff0000ff','#c0830aff'];
-  document.documentElement.style.setProperty('--sam-color', textColor[Math.floor(Math.random() * textColor.length)]);
-  setTimeout(() => document.documentElement.style.setProperty('--sam-color', '#00FFFF'), 1000);
+  const colors = ['#c3c382', '#FF00FF', '#4ae39eff', '#ff0000ff', '#c0830aff'];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+
+  root.style.setProperty('--sam-color', color);
+  setTimeout(() => {
+    root.style.setProperty('--sam-color', DEFAULT_COLOR);
+  }, 1000);
 }
 
-// Event listeners
 logo.addEventListener('click', spinLogo);
 logo.addEventListener('animationend', endSpin);
-['click', 'touchstart'].forEach(evt => button.addEventListener(evt, buttonEffect));
+
+['click', 'touchstart'].forEach(evt =>
+  button.addEventListener(evt, buttonEffect)
+);
+
 samName.addEventListener('click', randomizeColor);
 infoToggle.addEventListener('change', popOut);
-close.addEventListener('click', clickToReturn);
+closeButton.addEventListener('click', clickToReturn);
 clickSpace.addEventListener('touchstart', clickToReturn);
 
 backgroundAnimationVideo.addEventListener('canplaythrough', showVideo);
@@ -133,27 +144,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isMobile) {
       setTimeout(() => {
-        samName.classList.remove("break-anywhere");
-        document.documentElement.style.setProperty('--sam-color', '#ff0000');
-        setTimeout(() => document.documentElement.style.setProperty('--sam-color', '#00FFFF'), 1000);
+        samName.classList.remove('break-anywhere');
+        root.style.setProperty('--sam-color', '#ff0000');
+        setTimeout(() => {
+          root.style.setProperty('--sam-color', DEFAULT_COLOR);
+        }, 1000);
       }, 1200);
     }
 
     setTimeout(nameTypeWrite, 200);
-
     setTimeout(checkResources, 4000);
 
-    // Fetch latest video
     fetch('/latest-video.json')
       .then(res => res.json())
       .then(data => {
         if (!data.videoId) {
-          videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error.">&#10007; Error loading video.</p>`;
+          videoInfo.innerHTML =
+            `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error.">&#10007; Error loading video.</p>`;
           videoInfo.classList.remove('ax');
           return;
         }
+
         const url = `https://www.youtube.com/watch?v=${data.videoId}`;
-        videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
+        videoInfo.innerHTML =
+          `<a href="${url}" target="_blank">${data.title}</a>`;
       })
       .catch(err => {
         videoInfo.textContent = 'Error loading video.';
