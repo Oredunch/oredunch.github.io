@@ -446,8 +446,6 @@ label.button {
 
 	h1 {
 		font-size: 32px;
-		text-wrap: wrap;
-		line-break: strict;
 		text-align: justify;
 	}
 
@@ -463,10 +461,6 @@ label.button {
 label,
 a.button.activated {
 	background-color: #101010;
-}
-
-.break-anywhere {
-	line-break: anywhere;
 }
 
 .spin {
@@ -556,6 +550,7 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
 
 
 
