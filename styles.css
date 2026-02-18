@@ -54,6 +54,7 @@
 
 .notice {
 	background-color: #48e2ff !important;
+	text-shadow: 0px 0px 4px #00000080 !important;
 }
 
 .ax:hover {
@@ -554,6 +555,7 @@ a.button.activated {
 	text-decoration: underline;
 
 }
+
 
 
 
