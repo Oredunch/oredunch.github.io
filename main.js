@@ -105,15 +105,15 @@ function clickToReturn() {
 
 function checkResources() {
   if (!isMobile && !backgroundAnimation.classList.contains('visible')) {
-    showError('Video failed to load.');
-    reloadResource(backgroundAnimationVideo);
+    // showError('Video failed to load.'); basically unnecessary
     showError('Attempting to reload resource.', 'positive');
+    reloadResource(backgroundAnimationVideo);
   }
 
   if (isMobile && !backgroundImage.classList.contains('visible')) {
-    showError('Image failed to load.');
-    reloadResource(backgroundImageImage);
+    // showError('Image failed to load.'); basically unnecessary
     showError('Attempting to reload resource.', 'positive');
+    reloadResource(backgroundImageImage);
   }
 }
 
