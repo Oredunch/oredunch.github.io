@@ -28,7 +28,10 @@ const targetName = 'Sammy Oredunchinch';
 const typeSpeed = 50;
 const DEFAULT_COLOR = '#00FFFF';
 
-function showError(message) {
+function showError(message, type='error') {
+  
+  errorPanel.classList.toggle('notice', type === 'positive');
+
   errorPanel.textContent = message;
   errorPanel.classList.add('error-message-active');
   setTimeout(() => {
@@ -103,10 +106,14 @@ function clickToReturn() {
 function checkResources() {
   if (!isMobile && !backgroundAnimation.classList.contains('visible')) {
     showError('Video failed to load.');
+    reloadResource(backgroundAnimationVideo);
+    showError('Attempting to reload resource.', 'positive');
   }
 
   if (isMobile && !backgroundImage.classList.contains('visible')) {
     showError('Image failed to load.');
+    reloadResource(backgroundImageImage);
+    showError('Attempting to reload resource.', 'positive');
   }
 }
 
@@ -134,6 +141,29 @@ clickSpace.addEventListener('touchstart', clickToReturn);
 
 backgroundAnimationVideo.addEventListener('canplaythrough', showVideo);
 backgroundImageImage.addEventListener('load', showImage);
+
+function reloadResource(element, retries = 3, delay = 1000) {
+    if (!element || !element.src) return;
+
+    let attempts = 0;
+    const originalSrc = element.src;
+
+    function tryLoad() {
+        attempts++;
+        element.src = originalSrc + `?cacheBuster=${Date.now()}`;
+    }
+
+    element.addEventListener('error', function onError() {
+        if (attempts < retries) {
+            setTimeout(tryLoad, delay);
+        } else {
+            console.warn(`Failed to load resource: ${originalSrc}`);
+        }
+    }, { once: true });
+
+    tryLoad();
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   showPage();
