@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     if (isMobile) {
-      root.style.setProperty('--sam-color', '#ff0000');
+      root.style.setProperty('--sam-color', '#00000000');
       setTimeout(() => {
         root.style.setProperty('--sam-color', DEFAULT_COLOR);
       }, 1200);
