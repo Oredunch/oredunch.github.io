@@ -159,6 +159,7 @@ body {
 }
 
 .error-message {
+	display: none;
 	position: absolute;
 	bottom: 8px;
 	right: 8px;
@@ -176,7 +177,8 @@ body {
 }
 
 .error-message-active {
-  transform: translateX(0); 
+    display: block;
+    transform: translateX(0); 
 }
 
 .center {
