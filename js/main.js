@@ -26,6 +26,9 @@ DOM.backgroundAnimationVideo.addEventListener('canplaythrough', showVideo);
 
 DOM.backgroundImageImage.addEventListener('load', showImage);
 
+window.addEventListener('load', () => {
+	document.body.style.visibility = 'visible';
+});
 
 document.addEventListener('DOMContentLoaded', () => {
 	showPage();
@@ -35,8 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		if (!isMobile) {
 			setTimeout(nameTypeWrite, 200);
-		} else {
-			DOM.samName.textContent = samsName;
 		}
 		setTimeout(checkResources, 250);
 		fetchLatestVideo();
