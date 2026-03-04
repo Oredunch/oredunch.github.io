@@ -30,7 +30,7 @@
 
 	<p id="error-message-tab" class="error-message"></p>
 
-	<div id="clickspace" class="empty-clickspace"></div>
+	<div id="clickspace" class="empty-clickspace disabled"></div>
 
 	<div id="video-animation" class="background-animation">
 		<video id="video-resource" src="images/animation.webm" autoplay loop muted></video>
@@ -38,6 +38,23 @@
 	<div id="still-image" class="background-still">
 		<img id="still-image-resource" src="images/still_image.png">
 	</div>
+
+	<nav id="nav-menu" class="nav-bar">
+		<div class="nav-title-bar">
+			<h2>Menu</h2>
+			<button id="close-menu-button" class="simple-cross right"></button>
+
+		</div>
+		<ul>
+			<li><p class="link">Coming soon</p></li>
+			<li class="flop"><p class="link">Coming soon</p></li>
+			<li><p class="link">Coming soon</p></li>
+			<li class="flop"><p class="link">Coming soon</p></li>
+			<li class="github"><a class="code" href="https://github.com/Oredunch/oredunch.github.io">Source Code</a></li>
+		</ul>
+	</nav>
+
+	<button id="open-menu-button" class="simple-cross alt"></button>
 
 	<div id="center-1" class="center">
 		<div class="logo">
@@ -47,19 +64,21 @@
 		<div class="separator"></div>
 
 		<div class="center-right">
-			<h1 class="break-anywhere" aria-label="Sammy Oredunchinch" id="name">__________________</h1>
-			<a id="button" href="https://www.youtube.com/@SammyOredunchinch" aria-label="Button to Youtube channel" target="_blank" class="button">YouTube
-				<img class="inline-emoji" src="images/Youtube-Cyan.png" alt="YouTube Icon">
-			</a>
-			<input type="checkbox" class="checkbox-1" name="pop out" id="info-toggle">
-			<label id="pop-label" for="info-toggle" class="button">
-				<span id="arrow" class="popout-indicator">
-					<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-						<path d="M3 16 L12 7 L21 16" fill="none" stroke="currentColor" stroke-width="2"
+			<h1 aria-label="Sammy Oredunchinch" id="name"></h1>
+			<div class="buttons">
+				<a id="button" href="https://www.youtube.com/@SammyOredunchinch" aria-label="Button to Youtube channel" target="_blank" class="button">YouTube
+					<img class="inline-emoji" src="images/Youtube-Cyan.png" alt="YouTube Icon">
+				</a>
+				<input type="checkbox" class="checkbox-1" name="pop out" id="info-toggle">
+				<label id="pop-label" for="info-toggle" class="button">
+					<span id="arrow" class="popout-indicator">
+						<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path d="M3 16 L12 7 L21 16" fill="none" stroke="currentColor" stroke-width="2"
 							stroke-linecap="round" stroke-linejoin="round" />
-					</svg>
-				</span>
-			</label>
+						</svg>
+					</span>
+				</label>
+			</div>
 		</div>
 	</div>
 	<div id="info-tab" class="center2">
@@ -72,7 +91,7 @@
 		</button>
 	</div>
 
-	<script src="scripts.js"></script>
+	<script type="module" src="/js/main.js"></script>
 </body>
 
 </html>
