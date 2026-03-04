@@ -1,16 +1,41 @@
 // background.js
 import { DOM } from './dom.js';
+import { showError } from './ui.js';
+
+
+function reloadResource(element, retries = 3, delay = 1000) {
+    if (!element || !element.src) return;
+
+    let attempts = 0;
+    const originalSrc = element.src;
+
+    function tryLoad() {
+        attempts++;
+        element.src = originalSrc + `?cacheBuster=${Date.now()}`;
+    }
+
+    element.addEventListener('error', function onError() {
+        if (attempts < retries) {
+            setTimeout(tryLoad, delay);
+        } else {
+            console.warn(`Failed to load resource: ${originalSrc}`);
+        }
+    }, { once: true });
+
+    tryLoad();
+}
 
 export function checkResources() {
-  if (!DOM.backgroundAnimation.classList.contains("visible")) {
-    DOM.errorPanel.classList.add("error-message-active")
-    DOM.errorPanel.textContent = "Video failed to load.";
-    setTimeout(() => { DOM.errorPanel.classList.remove("error-message-active");  }, 2500);
+  if (!DOM.isMobile && !DOM.backgroundAnimation.classList.contains('visible')) {
+    // showError('Video failed to load.'); basically unnecessary
+    showError('Attempting to reload resource.', 'positive');
+    reloadResource(DOM.backgroundAnimationVideo);
   }
-  if (!DOM.backgroundImage.classList.contains("visible" && isMobile)) {
-    DOM.errorPanel.classList.add("error-message-active")
-    DOM.errorPanel.textContent = "Image failed to load.";
-    setTimeout(() => { DOM.errorPanel.classList.remove("error-message-active");  }, 2500);
+
+  if (DOM.isMobile && !DOM.backgroundImage.classList.contains('visible')) {
+    // showError('Image failed to load.'); basically unnecessary
+    showError('Attempting to reload resource.', 'positive');
+    reloadResource(DOM.backgroundImageImage);
   }
 }
 

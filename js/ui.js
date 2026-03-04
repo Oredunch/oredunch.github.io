@@ -58,3 +58,14 @@ export function randomizeColor() {
   document.documentElement.style.setProperty('--sam-color', textColor[Math.floor(Math.random() * textColor.length)]);
   setTimeout(() => document.documentElement.style.setProperty('--sam-color', '#00FFFF'), 1000);
 }
+
+export function showError(message, type='error') {
+  
+  DOM.errorPanel.classList.toggle('notice', type === 'positive');
+
+  DOM.errorPanel.textContent = message;
+  DOM.errorPanel.classList.add('error-message-active');
+  setTimeout(() => {
+    DOM.errorPanel.classList.remove('error-message-active');
+  }, 2500);
+}
