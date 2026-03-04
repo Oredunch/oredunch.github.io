@@ -76,13 +76,6 @@
 	appearance: none;
 }
 
-.nav-bar li.github * {
-	background-color: #181717;
-	padding: 2px;
-	border-radius: 4px;
-	color: #0366d6 !important;
-}
-
 .ax a {
 	text-decoration: none;
 	margin: 16px;
@@ -370,6 +363,13 @@ label.button {
 		display: none;
 	}
 
+	.nav-bar li.github * {
+		background-color: #181717;
+		padding: 2px;
+		border-radius: 4px;
+		color: #0366d6 !important;
+	}	
+
 	.center {
 		border-radius: 76px 8px 8px 76px;
 	}
@@ -471,8 +471,9 @@ label.button {
 	}
 
 	.nav-bar li {
+		display: flex;
+		align-items: center;
 		background-color: #777;
-		padding: 0 0 0 16px;
 		width: 100%;
 		height: 54px;
 		list-style: none;
@@ -480,6 +481,7 @@ label.button {
 		appearance: none;
 		text-align: left;
 		border: none;
+		overflow: hidden;
 		border-top: 1px solid transparent;
 		border-image: linear-gradient(to right, transparent, #fff, transparent) 1;
 		box-shadow: inset 0 -2px 1px #222;
@@ -487,6 +489,14 @@ label.button {
 
 	.nav-bar li.github {
 		background-color: #181717;
+	}
+
+	.nav-bar li * {
+		align-content: center;
+		padding: 0 0 0 16px !important;
+		margin: 0;
+		width: 100%;
+		height: 100%;
 	}
 
 	.nav-title-bar {
