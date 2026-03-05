@@ -16,7 +16,11 @@ DOM.clickSpace.addEventListener('touchend', e => {
 	e.preventDefault(); // touchend makes like a click simulation
 });
 
-DOM.menuCloseButton.addEventListener('touchstart', () => DOM.navMenu.classList.toggle('nav-menu-open'));
+DOM.menuCloseButton.addEventListener('touchstart', () => {
+	DOM.navMenu.classList.toggle('nav-menu-open');
+	DOM.clickSpace.classList.add('disabled');
+});
+
 DOM.menuOpenButton.addEventListener('touchstart', () => {
 	DOM.navMenu.classList.toggle('nav-menu-open');
 	DOM.clickSpace.classList.remove('disabled');
