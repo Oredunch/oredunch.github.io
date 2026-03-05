@@ -371,6 +371,19 @@ label.button {
 		color: #0366d6 !important;
 	}
 
+	.nav-bar li * {
+		&:hover {
+			color: var(--button-hover-bg);
+		}
+		&:active {
+			color: #222;
+		}
+	}
+
+	.ax:hover {
+		opacity: 50%;
+	}
+
 	.center {
 		border-radius: 76px 8px 8px 76px;
 	}
