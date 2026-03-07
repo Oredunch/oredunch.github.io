@@ -1,6 +1,6 @@
 // main.js
 import { DOM, isMobile } from './dom.js';
-import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName } from './ui.js';
+import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, navEnter, navLeave } from './ui.js';
 import { popOut, clickToReturn } from './infoPanel.js';
 import { checkResources, fetchLatestVideo } from './background.js';
 
@@ -12,19 +12,25 @@ DOM.samName.addEventListener('click', randomizeColor);
 DOM.infoToggle.addEventListener('change', popOut);
 DOM.close.addEventListener('click', clickToReturn);
 DOM.clickSpace.addEventListener('touchstart', clickToReturn);
+DOM.clickSpace.addEventListener('click', clickToReturn);
 DOM.clickSpace.addEventListener('touchend', e => {
 	e.preventDefault(); // touchend makes like a click simulation
 });
 
-DOM.menuCloseButton.addEventListener('touchstart', () => {
-	DOM.navMenu.classList.toggle('nav-menu-open');
-	DOM.clickSpace.classList.add('disabled');
+['click', 'touchstart'].forEach(evt => {
+	DOM.menuCloseButton.addEventListener(evt, () => {
+		DOM.navMenu.classList.toggle('nav-menu-open');
+		DOM.clickSpace.classList.add('disabled');
+	});
+
+	DOM.menuOpenButton.addEventListener(evt, () => {
+		DOM.navMenu.classList.toggle('nav-menu-open');
+		DOM.clickSpace.classList.remove('disabled');
+	});
 });
 
-DOM.menuOpenButton.addEventListener('touchstart', () => {
-	DOM.navMenu.classList.toggle('nav-menu-open');
-	DOM.clickSpace.classList.remove('disabled');
-});
+DOM.navMenuArea.addEventListener('mouseenter', navEnter);
+DOM.navMenuArea.addEventListener('mouseleave', navLeave);
 
 DOM.backgroundAnimationVideo.addEventListener('canplaythrough', showVideo);
 

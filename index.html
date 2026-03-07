@@ -24,21 +24,21 @@
 	<title>Sammy Oredunchinch</title>
 	<meta name="description" content="Official page of Sammy Oredunchinch">
 	<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Project",
-    "keywords": [
-      "music",
-      "experimental music",
-      "sound design",
-      "art",
-      "visual art",
-      "multimedia",
-      "performance"
-    ]
-  }
-  </script>
+	{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"name": "Project",
+		"keywords": [
+		"music",
+		"experimental music",
+		"sound design",
+		"art",
+		"visual art",
+		"multimedia",
+		"performance"
+		]
+	}
+	</script>
 	<meta name="theme-color" content="#000000">
 	<meta name="robots" content="index, follow">
 	<link rel="canonical" href="https://www.oredunch.github.io/">
@@ -48,9 +48,10 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&family=Doto:wght@400;700;900&display=swap"
-		rel="stylesheet">
 
+	<link
+		href="https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&family=Doto:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap"
+		rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
 
 	<meta name="color-scheme" content="dark light">
@@ -60,77 +61,82 @@
 <body>
 	<div class="cover" id="cover"></div>
 
-	<p id="error-message-tab" class="error-message"></p>
+	<div class="page-wrapper">
+		<p id="error-message-tab" class="error-message"></p>
 
-	<div id="clickspace" class="empty-clickspace disabled"></div>
+		<div id="clickspace" class="empty-clickspace disabled"></div>
 
-	<div id="video-animation" class="background-animation">
-		<video id="video-resource" src="/images/animation.webm" autoplay loop muted></video>
-	</div>
-	<div id="still-image" class="background-still">
-		<img id="still-image-resource" src="/images/still_image.png">
-	</div>
-
-	<nav id="nav-menu" class="nav-bar">
-		<div class="nav-title-bar">
-			<h2>Menu</h2>
-			<button id="close-menu-button" class="simple-cross right"></button>
-
+		<div id="video-animation" class="background-animation">
+			<video id="video-resource" src="/images/animation.webm" autoplay loop muted></video>
 		</div>
-		<ul>
-			<li>
-				<p class="link">Coming soon</p>
-			</li>
-			<li class="flop">
-				<p class="link">Coming soon</p>
-			</li>
-			<li>
-				<p class="link">Coming soon</p>
-			</li>
-			<li class="flop">
-				<p class="link">Coming soon</p>
-			</li>
-			<li class="github"><a class="code" href="https://github.com/Oredunch/oredunch.github.io">Source Code</a>
-			</li>
-		</ul>
-	</nav>
-
-	<button id="open-menu-button" class="simple-cross alt"></button>
-
-	<div id="center-1" class="center">
-		<div class="logo">
-			<img id="logo-image" src="images/SamO.png" alt="Logo" class="logo">
+		<div id="still-image" class="background-still">
+			<img id="still-image-resource" src="/images/still_image.png">
 		</div>
 
-		<div class="separator"></div>
+		<div id="nav-menu-area" class="nav-menu-area"></div>
 
-		<div class="center-right">
-			<h1 aria-label="Sammy Oredunchinch" id="name"></h1>
-			<div class="buttons">
-				<a id="button" href="https://www.youtube.com/@SammyOredunchinch" aria-label="Button to Youtube channel"
-					target="_blank" class="button">YouTube
-					<img class="inline-emoji" src="images/Youtube-Cyan.png" alt="YouTube Icon">
-				</a>
-				<input type="checkbox" class="checkbox-1" name="pop out" id="info-toggle">
-				<label id="pop-label" for="info-toggle" class="button">
-					<span id="arrow" class="popout-indicator">
-						<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M3 16 L12 7 L21 16" fill="none" stroke="currentColor" stroke-width="2"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-				</label>
+		<nav id="nav-menu" class="nav-bar nav-active">
+			<div class="nav-title-bar">
+				<h2>Menu</h2>
+				<button id="close-menu-button" class="simple-cross right"></button>
+
+			</div>
+			<ul>
+				<li>
+					<p class="link">Coming soon</p>
+				</li>
+				<li class="flop">
+					<p class="link">Coming soon</p>
+				</li>
+				<li>
+					<p class="link">Coming soon</p>
+				</li>
+				<li class="flop">
+					<p class="link">Coming soon</p>
+				</li>
+				<li class="github"><a class="code" href="https://github.com/Oredunch/oredunch.github.io">Source Code</a>
+				</li>
+			</ul>
+		</nav>
+
+		<button id="open-menu-button" class="simple-cross alt"></button>
+
+		<div id="center-1" class="center">
+			<div class="logo">
+				<img id="logo-image" src="images/SamO.png" alt="Logo" class="logo">
+			</div>
+
+			<div class="separator"></div>
+
+			<div class="center-right">
+				<h1 aria-label="Sammy Oredunchinch" id="name"></h1>
+				<div class="buttons">
+					<div class="flexible-space"></div>
+					<a id="button" href="https://www.youtube.com/@SammyOredunchinch"
+						aria-label="Button to Youtube channel" target="_blank" class="button">YouTube
+						<img class="inline-emoji" src="images/Youtube-Cyan.png" alt="YouTube Icon">
+					</a>
+					<input type="checkbox" class="checkbox-1" name="pop out" id="info-toggle">
+					<label id="pop-label" for="info-toggle" class="button">
+						<span id="arrow" class="popout-indicator">
+							<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path d="M3 16 L12 7 L21 16" fill="none" stroke="currentColor" stroke-width="2"
+									stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</span>
+					</label>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div id="info-tab" class="center2">
-		<h2 class="padding">Newest video</h2>
-		<span class="youtube-span ab ax" id="latest-video"></span>
-		<button id="close" class="button pad bl">
-			<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path d="M6 6 L18 18 M6 18 L18 6" fill="none" stroke="currentColor" stroke-width="2"
-					stroke-linecap="round" stroke-linejoin="round" />
-		</button>
+		<div id="info-tab" class="center2">
+			<h2 class="padding">Newest video</h2>
+			<span class="youtube-span ab ax" id="latest-video"></span>
+			<button id="close" class="button pad bl">
+				<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					<path d="M6 6 L18 18 M6 18 L18 6" fill="none" stroke="currentColor" stroke-width="2"
+						stroke-linecap="round" stroke-linejoin="round" />
+			</button>
+		</div>
 	</div>
 
 	<script type="module" src="/js/main.js"></script>

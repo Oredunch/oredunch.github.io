@@ -4,12 +4,14 @@ import { DOM, isMobile } from './dom.js';
 let isSpinning = false;
 const speed = 50;
 let imaginary = 0;
+let canLeave = false;
 export const samsName = 'Sammy Oredunchinch';
 
 export function showPage() {
 	initName();
 	setTimeout(() => DOM.coverUp.classList.add('opaq'), 100);
 	setTimeout(() => DOM.coverUp.classList.add('disabled'), 1500);
+	setTimeout(() => { canLeave = true; navLeave() }, 1500);
 }
 
 export function spinLogo() {
@@ -41,7 +43,7 @@ export function buttonEffect() {
 
 export function initName() {
 	if (!isMobile) {
-		DOM.samName.textContent = "_".repeat(samsName.length);
+		DOM.samName.textContent = "#".repeat(samsName.length);
 	} else {
 		DOM.samName.textContent = samsName;
 	}
@@ -72,4 +74,16 @@ export function showError(message, type = 'error') {
 	setTimeout(() => {
 		DOM.errorPanel.classList.remove('error-message-active');
 	}, 2500);
+}
+
+export function navEnter() {
+	DOM.navMenu.classList.add('nav-active');
+}
+
+export function navLeave() {
+	if (canLeave) {
+		setTimeout(() => {
+			DOM.navMenu.classList.remove('nav-active');
+		}, 400);
+	}
 }
