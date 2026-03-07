@@ -87,3 +87,16 @@ export function navLeave() {
 		}, 400);
 	}
 }
+
+export function toggleCursor() {
+	document.querySelectorAll('*').forEach(el => {
+		el.classList.toggle('no-cur');
+	});
+}
+
+export function hideCursor() {
+	document.querySelectorAll('*').forEach(el => {
+		el.classList.add('no-cur');
+	});
+}
+

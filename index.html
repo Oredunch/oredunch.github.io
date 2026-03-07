@@ -73,6 +73,13 @@
 			<img id="still-image-resource" src="/images/still_image.png">
 		</div>
 
+		<div data-cursor="pointer" id="mouseToggle">
+			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M7.92098 2.29951C6.93571 1.5331 5.5 2.23523 5.5 3.48349V20.4923C5.5 21.9145 7.2945 22.5382 8.17661 21.4226L12.3676 16.1224C12.6806 15.7267 13.1574 15.4958 13.6619 15.4958H20.5143C21.9425 15.4958 22.5626 13.6887 21.4353 12.8119L7.92098 2.29951Z" />
+			</svg>
+		</div>
+
 		<div id="nav-menu-area" class="nav-menu-area"></div>
 
 		<nav id="nav-menu" class="nav-bar nav-active">
@@ -82,19 +89,20 @@
 
 			</div>
 			<ul>
-				<li>
+				<li data-cursor="pointer">
 					<p class="link">Coming soon</p>
 				</li>
-				<li class="flop">
+				<li data-cursor="pointer" class="flop">
 					<p class="link">Coming soon</p>
 				</li>
-				<li>
+				<li data-cursor="pointer">
 					<p class="link">Coming soon</p>
 				</li>
-				<li class="flop">
+				<li data-cursor="pointer" class="flop">
 					<p class="link">Coming soon</p>
 				</li>
-				<li class="github"><a class="code" href="https://github.com/Oredunch/oredunch.github.io">Source Code</a>
+				<li data-cursor="pointer" class="github"><a class="code"
+						href="https://github.com/Oredunch/oredunch.github.io">Source Code</a>
 				</li>
 			</ul>
 		</nav>
@@ -102,22 +110,22 @@
 		<button id="open-menu-button" class="simple-cross alt"></button>
 
 		<div id="center-1" class="center">
-			<div class="logo">
+			<div data-cursor="pointer" class="logo">
 				<img id="logo-image" src="images/SamO.png" alt="Logo" class="logo">
 			</div>
 
 			<div class="separator"></div>
 
 			<div class="center-right">
-				<h1 aria-label="Sammy Oredunchinch" id="name"></h1>
+				<h1 data-cursor="pointer" aria-label="Sammy Oredunchinch" id="name"></h1>
 				<div class="buttons">
 					<div class="flexible-space"></div>
-					<a id="button" href="https://www.youtube.com/@SammyOredunchinch"
+					<a data-cursor="pointer" id="button" href="https://www.youtube.com/@SammyOredunchinch"
 						aria-label="Button to Youtube channel" target="_blank" class="button">YouTube
 						<img class="inline-emoji" src="images/Youtube-Cyan.png" alt="YouTube Icon">
 					</a>
 					<input type="checkbox" class="checkbox-1" name="pop out" id="info-toggle">
-					<label id="pop-label" for="info-toggle" class="button">
+					<label data-cursor="pointer" id="pop-label" for="info-toggle" class="button">
 						<span id="arrow" class="popout-indicator">
 							<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 								<path d="M3 16 L12 7 L21 16" fill="none" stroke="currentColor" stroke-width="2"
@@ -130,8 +138,8 @@
 		</div>
 		<div id="info-tab" class="center2">
 			<h2 class="padding">Newest video</h2>
-			<span class="youtube-span ab ax" id="latest-video"></span>
-			<button id="close" class="button pad bl">
+			<span data-cursor="pointer" class="youtube-span ab ax" id="latest-video"></span>
+			<button data-cursor="pointer" id="close" class="button pad bl">
 				<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 					<path d="M6 6 L18 18 M6 18 L18 6" fill="none" stroke="currentColor" stroke-width="2"
 						stroke-linecap="round" stroke-linejoin="round" />
@@ -139,7 +147,10 @@
 		</div>
 	</div>
 
+	<div id="cursor" class="cursor-overlay visible"></div>
+
 	<script type="module" src="/js/main.js"></script>
+	<script type="module" src="/js/mouse.js"></script>
 </body>
 
 </html>

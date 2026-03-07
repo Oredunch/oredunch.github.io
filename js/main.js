@@ -1,6 +1,6 @@
 // main.js
-import { DOM, isMobile } from './dom.js';
-import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, navEnter, navLeave } from './ui.js';
+import { DOM, isMobile, htmlEl, bodyEl } from './dom.js';
+import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, navEnter, navLeave, toggleCursor, hideCursor } from './ui.js';
 import { popOut, clickToReturn } from './infoPanel.js';
 import { checkResources, fetchLatestVideo } from './background.js';
 
@@ -30,7 +30,26 @@ DOM.clickSpace.addEventListener('touchend', e => {
 });
 
 DOM.navMenuArea.addEventListener('mouseenter', navEnter);
-DOM.navMenuArea.addEventListener('mouseleave', navLeave);
+DOM.navMenu.addEventListener('mouseleave', navLeave);
+
+if (!isMobile) {
+	hideCursor();
+}
+
+DOM.mouseToggle.addEventListener('click', () => {
+	toggleCursor();
+	DOM.cursor.classList.toggle('visible');
+	DOM.mouseToggle.classList.toggle('mTactive');
+});
+
+window.addEventListener('resize', () => {
+	if (bodyEl.classList.contains('no-cur')) {
+		toggleCursor();
+		DOM.cursor.classList.toggle('visible');
+		DOM.mouseToggle.classList.toggle('mTactive');
+	}
+})
+
 
 DOM.backgroundAnimationVideo.addEventListener('canplaythrough', showVideo);
 

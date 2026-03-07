@@ -21,7 +21,9 @@ export const DOM = {
 	backgroundImageImage: document.getElementById("still-image-resource"),
 	popoutIndicator: document.getElementById("arrow"),
 	videoInfo: document.getElementById('latest-video'),
-	aspectRatio: window.innerWidth / window.innerHeight
+	aspectRatio: window.innerWidth / window.innerHeight,
+	cursor: document.getElementById('cursor'),
+	mouseToggle: document.getElementById('mouseToggle')
 };
 
 export const htmlEl = document.documentElement;
