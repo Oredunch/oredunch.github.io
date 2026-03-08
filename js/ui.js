@@ -65,7 +65,7 @@ export function randomizeColor() {
 	setTimeout(() => document.documentElement.style.setProperty('--sam-color', '#00FFFF'), 1000);
 }
 
-export function showError(message, type = 'error') {
+export function alert(message, type = 'error') {
 
 	DOM.errorPanel.classList.toggle('notice', type === 'positive');
 
@@ -100,3 +100,13 @@ export function hideCursor() {
 	});
 }
 
+export function checkOrientation() {
+	if (!isMobile) return;
+
+	const orientation = window.orientation;
+	if (orientation === 90 || orientation === -90) {
+		document.body.classList.add('rotate-splash');
+	} else {
+		document.body.classList.remove('rotate-splash');
+	}
+}

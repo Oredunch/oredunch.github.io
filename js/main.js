@@ -1,6 +1,6 @@
 // main.js
-import { DOM, isMobile, htmlEl, bodyEl } from './dom.js';
-import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, navEnter, navLeave, toggleCursor, hideCursor } from './ui.js';
+import { DOM, isMobile, htmlEl, bodyEl, isSmall } from './dom.js';
+import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, navEnter, navLeave, toggleCursor, hideCursor, checkOrientation, alert } from './ui.js';
 import { popOut, clickToReturn } from './infoPanel.js';
 import { checkResources, fetchLatestVideo } from './background.js';
 
@@ -32,7 +32,7 @@ DOM.clickSpace.addEventListener('touchend', e => {
 DOM.navMenuArea.addEventListener('mouseenter', navEnter);
 DOM.navMenu.addEventListener('mouseleave', navLeave);
 
-if (!isMobile) {
+if (!isMobile()) {
 	hideCursor();
 }
 
@@ -47,8 +47,26 @@ window.addEventListener('resize', () => {
 		toggleCursor();
 		DOM.cursor.classList.toggle('visible');
 		DOM.mouseToggle.classList.toggle('mTactive');
+		alert('Resize detected: Disabling cursor effect', 'positive');
+	}
+	if (isSmall() && !isMobile()) {
+		bodyEl.classList.add('ismobile', 'desktop');
+	} else if (!isSmall() && !isMobile()) {
+		bodyEl.classList.remove('ismobile', 'desktop');
 	}
 })
+
+window.addEventListener('orientationchange', () => {
+	checkOrientation();
+});
+
+if (isMobile()) {
+	bodyEl.classList.add('ismobile');
+}
+
+if (isSmall() && !isMobile()) {
+	bodyEl.classList.add('ismobile', 'desktop');
+}
 
 
 DOM.backgroundAnimationVideo.addEventListener('canplaythrough', showVideo);
@@ -65,11 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	setTimeout(() => {
 		DOM.infoToggle.checked = true;
 
-		if (!isMobile) {
+		if (!isMobile()) {
 			setTimeout(nameTypeWrite, 200);
 		}
 		setTimeout(checkResources, 250);
 		fetchLatestVideo();
-
 	}, 250);
+
+	checkOrientation();
+
 });

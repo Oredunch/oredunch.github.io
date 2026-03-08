@@ -28,4 +28,13 @@ export const DOM = {
 
 export const htmlEl = document.documentElement;
 export const bodyEl = document.body;
-export const isMobile = window.matchMedia("(max-width: 768px)").matches;
+// export const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+// export const isSmall = window.matchMedia('(max-width: 1024px)').matches;
+
+export function isSmall() {
+	return window.matchMedia('(max-width: 1024px)').matches;
+}
+
+export function isMobile() {
+	return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}

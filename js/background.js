@@ -1,6 +1,6 @@
 // background.js
 import { DOM } from './dom.js';
-import { showError, showImage, showVideo } from './ui.js';
+import { alert, showImage, showVideo } from './ui.js';
 
 
 function reloadResource(element, onSuccess, retries = 3, delay = 1000) {
@@ -76,7 +76,7 @@ export function fetchLatestVideo() {
 				return;
 			}
 			const url = `https://www.youtube.com/watch?v=${data.videoId}`;
-			DOM.videoInfo.innerHTML = `<a href="${url}" target="_blank">${data.title}</a>`;
+			DOM.videoInfo.innerHTML = `<a data-cursor="pointer" class="no-cur" href="${url}" target="_blank">${data.title}</a>`;
 		})
 		.catch(err => {
 			DOM.videoInfo.textContent = 'Error loading video.';

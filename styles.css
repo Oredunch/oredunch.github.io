@@ -457,7 +457,7 @@ label.button {
 	box-shadow: 4px 0px 8px #0002;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
 	.empty-clickspace {
 		display: none;
 	}
@@ -586,224 +586,224 @@ label.button {
 	user-select: none;
 }
 
-@media (max-width: 768px) {
+/*mobile styles likes this instead of usuing @media*/
 
-	.cursor-overlay {
-		display: none;
-	}
-
-	#mouseToggle {
-		display: none;
-	}
-
-	.nav-bar {
-		display: flex;
-		flex-direction: column;
-		margin: 0;
-		justify-content: start;
-		position: absolute;
-		overflow: hidden;
-		border-right: 2px solid #388;
-		top: 0;
-		left: 0;
-		transform: translateX(-100vw);
-		height: 100%;
-		width: 80%;
-		backdrop-filter: saturate(8) blur(16px);
-		background-color: #3338;
-		transition: transform 0.4s var(--bezier);
-	}
-
-	.nav-bar ul {
-		padding: 0;
-		margin: 0;
-		display: flex;
-		gap: 0px;
-		width: 100%;
-		flex-direction: column;
-	}
-
-	.nav-bar li {
-		display: flex;
-		align-items: center;
-		background-color: #7778;
-		width: 100%;
-		height: 54px;
-		list-style: none;
-		list-style-type: none;
-		appearance: none;
-		text-align: left;
-		border: none;
-		overflow: hidden;
-		border-top: 1px solid transparent;
-		border-image: linear-gradient(to right, transparent, #388, transparent) 1;
-		box-shadow: inset 0 -2px 1px #222;
-	}
-
-	.flop {
-		background-color: #3338 !important;
-	}
-
-	.nav-bar li.github {
-		background-color: #181717;
-	}
-
-	.nav-bar li * {
-		align-content: center;
-		padding: 0 0 0 16px !important;
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-
-	.nav-title-bar {
-		display: flex;
-		align-items: center;
-		gap: 8px;
-		width: 100%;
-		background-color: #3888;
-		margin-bottom: 16px;
-		border-bottom: 2px solid #388;
-	}
-
-	.nav-title-bar h2 {
-		padding: 0 0 0 16px;
-	}
-
-	.simple-cross {
-		appearance: none;
-		background-image: url('/images/xicon.png');
-		background-size: contain;
-		background-color: transparent;
-		background-repeat: no-repeat;
-		width: 64px;
-		height: 64px;
-		transform: scale(0.5);
-		z-index: 11;
-		opacity: 50%;
-		border: none;
-		cursor: pointer;
-	}
-
-	.simple-cross:active {
-		opacity: 100%;
-	}
-
-	.alt:active {
-		filter: none;
-	}
-
-	.flexible-space {
-		display: none;
-	}
-
-	.buttons {
-		display: flex;
-		flex-direction: row;
-		gap: 8px;
-		align-items: center;
-		height: auto;
-	}
-
-	.buttons * {
-		height: 64px;
-		margin: 0;
-	}
-
-	.minimized {
-		transform: perspective(600px) rotateX(-180deg);
-		filter: saturate(0%) brightness(50%);
-		animation: spin 2s linear infinite;
-	}
-
-	.checkbox-1 {
-		position: absolute;
-	}
-
-	.center2 {
-		display: flex;
-		position: absolute;
-		flex-direction: column;
-		top: 0;
-		opacity: 0%;
-		align-items: center;
-		justify-content: center;
-		background-color: var(--base-element);
-		width: auto;
-		height: auto;
-		padding: 12px;
-		transform: translateY(-100%);
-		border-radius: 0px 0px 8px 8px;
-		border: 2px solid var(--text-color-dark-dull);
-		border-top: none;
-		backdrop-filter: blur(16px);
-		z-index: 12;
-		transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-	}
-
-	.center2.poppedout {
-		position: absolute;
-		transform: translateY(0);
-		opacity: 100%;
-	}
-
-	.background-animation {
-		display: none;
-	}
-
-	.background-still {
-		display: flex;
-	}
-
-	.center {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding: 12px;
-		border-radius: 166px 166px 22px 22px;
-		width: auto;
-		height: auto;
-		max-height: 664px;
-		transition: transform 1s var(--bouncy), filter 0.5s ease-out;
-	}
-
-	.center-right {
-		display: flex;
-		width: 264px;
-		padding: none;
-		justify-content: center;
-		align-items: center;
-		gap: 8px;
-		flex-direction: row;
-		flex-wrap: wrap;
-	}
-
-	.separator {
-		display: none;
-	}
-
-	.logo {
-		width: 256px;
-		height: auto;
-	}
-
-	.spin {
-		will-change: transform, filter;
-	}
-
-	h1 {
-		font-size: 32px;
-		text-align: center;
-	}
-
-	.bl {
-		display: flex;
-	}
-
-	.button {
-		padding: 16px;
-	}
+.ismobile:not(.desktop) .cursor-overlay {
+	display: none;
 }
+
+.ismobile:not(.desktop) #mouseToggle {
+	display: none;
+}
+
+.ismobile .nav-bar {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	justify-content: start;
+	position: absolute;
+	overflow: hidden;
+	border-right: 2px solid #388;
+	top: 0;
+	left: 0;
+	transform: translateX(-100vw);
+	height: 100%;
+	width: 80%;
+	backdrop-filter: saturate(8) blur(16px);
+	background-color: #3338;
+	transition: transform 0.4s var(--bezier);
+}
+
+.ismobile .nav-bar ul {
+	padding: 0;
+	margin: 0;
+	display: flex;
+	gap: 0px;
+	width: 100%;
+	flex-direction: column;
+}
+
+.ismobile .nav-bar li {
+	display: flex;
+	align-items: center;
+	background-color: #7778;
+	width: 100%;
+	height: 54px;
+	list-style: none;
+	text-align: left;
+	border: none;
+	overflow: hidden;
+	border-top: 1px solid transparent;
+	border-image: linear-gradient(to right, transparent, #388, transparent) 1;
+	box-shadow: inset 0 -2px 1px #222;
+}
+
+.ismobile .flop {
+	background-color: #3338 !important;
+}
+
+.ismobile .nav-bar li.github {
+	background-color: #181717;
+}
+
+.ismobile .nav-bar li * {
+	align-content: center;
+	padding: 0 0 0 16px !important;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.ismobile .nav-title-bar {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	background-color: #3888;
+	margin-bottom: 16px;
+	border-bottom: 2px solid #388;
+}
+
+.ismobile .nav-title-bar h2 {
+	padding: 0 0 0 16px;
+}
+
+.ismobile .simple-cross {
+	appearance: none;
+	background-image: url('/images/xicon.png');
+	background-size: contain;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	width: 64px;
+	height: 64px;
+	transform: scale(0.5);
+	z-index: 11;
+	opacity: 50%;
+	border: none;
+	cursor: pointer;
+}
+
+.ismobile .simple-cross:active {
+	opacity: 100%;
+}
+
+.ismobile .alt:active {
+	filter: none;
+}
+
+.ismobile .flexible-space {
+	display: none;
+}
+
+.ismobile .buttons {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+	align-items: center;
+	height: auto;
+}
+
+.ismobile .buttons * {
+	height: 64px;
+	margin: 0;
+}
+
+.ismobile .minimized {
+	will-change: transform;
+	transform: perspective(600px) rotateX(-180deg);
+	filter: saturate(0%) brightness(50%);
+	animation: spin 2s linear infinite;
+}
+
+.ismobile .checkbox-1 {
+	position: absolute;
+}
+
+.ismobile .center2 {
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+	top: 0;
+	opacity: 0%;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--base-element);
+	width: auto;
+	height: auto;
+	padding: 12px;
+	transform: translateY(-100%);
+	border-radius: 0px 0px 8px 8px;
+	border: 2px solid var(--text-color-dark-dull);
+	border-top: none;
+	backdrop-filter: blur(16px);
+	z-index: 12;
+	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.ismobile .center2.poppedout {
+	position: absolute;
+	transform: translateY(0);
+	opacity: 100%;
+}
+
+.ismobile .background-animation {
+	display: none;
+}
+
+.ismobile .background-still {
+	display: flex;
+}
+
+.ismobile .center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 12px;
+	border-radius: 166px 166px 22px 22px;
+	width: auto;
+	height: auto;
+	max-height: 664px;
+	transition: transform 1s var(--bouncy), filter 0.5s ease-out;
+}
+
+.ismobile .center-right {
+	display: flex;
+	width: 264px;
+	padding: none;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.ismobile .separator {
+	display: none;
+}
+
+.ismobile .logo {
+	width: 256px;
+	height: auto;
+}
+
+.ismobile .spin {
+	will-change: transform, filter;
+}
+
+.ismobile h1 {
+	font-size: 32px;
+	text-align: center;
+}
+
+.ismobile .bl {
+	display: flex;
+}
+
+.ismobile .button {
+	padding: 16px;
+}
+
+/*EOS*/
 
 label,
 a.button.activated {
@@ -908,4 +908,20 @@ a {
 	text-decoration: none;
 	margin: 0;
 	font-family: 'Space Mono', monospace !important;
+}
+
+
+.rotate-splash::before {
+	content: "Please rotate your phone.\AMobile landscape layout is not supported.";
+	position: fixed;
+	inset: 0;
+	display: flex;
+	justify-content: center;
+	white-space: pre;
+	align-items: center;
+	background: #000000;
+	color: rgb(255, 0, 0);
+	font-size: 2rem;
+	font-weight: bolder;
+	z-index: 9999;
 }
