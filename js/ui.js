@@ -76,18 +76,6 @@ export function alert(message, type = 'error') {
 	}, 2500);
 }
 
-export function navEnter() {
-	DOM.navMenu.classList.add('nav-active');
-}
-
-export function navLeave() {
-	if (canLeave) {
-		setTimeout(() => {
-			DOM.navMenu.classList.remove('nav-active');
-		}, 400);
-	}
-}
-
 export function toggleCursor() {
 	document.querySelectorAll('*').forEach(el => {
 		el.classList.toggle('no-cur');

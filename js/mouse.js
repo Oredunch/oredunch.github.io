@@ -8,7 +8,7 @@ let mouseY = 0;
 let x = 0;
 let y = 0;
 
-const damping = 0.1;
+const damping = 0.2;
 
 window.addEventListener("mousemove", (e) => {
 

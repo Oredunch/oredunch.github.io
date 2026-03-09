@@ -1,6 +1,6 @@
 // main.js
 import { DOM, isMobile, htmlEl, bodyEl, isSmall } from './dom.js';
-import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, navEnter, navLeave, toggleCursor, hideCursor, checkOrientation, alert } from './ui.js';
+import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, toggleCursor, hideCursor, checkOrientation, alert } from './ui.js';
 import { popOut, clickToReturn } from './infoPanel.js';
 import { checkResources, fetchLatestVideo } from './background.js';
 
@@ -28,9 +28,6 @@ DOM.clickSpace.addEventListener('touchend', e => {
 		DOM.clickSpace.classList.remove('disabled');
 	});
 });
-
-DOM.navMenuArea.addEventListener('mouseenter', navEnter);
-DOM.navMenu.addEventListener('mouseleave', navLeave);
 
 if (!isMobile()) {
 	hideCursor();
