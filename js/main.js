@@ -1,6 +1,6 @@
 // main.js
 import { DOM, isMobile, htmlEl, bodyEl, isSmall } from './dom.js';
-import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, toggleCursor, hideCursor, checkOrientation, alert } from './ui.js';
+import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, showCursor, hideCursor, checkOrientation, alert } from './ui.js';
 import { popOut, clickToReturn } from './infoPanel.js';
 import { checkResources, fetchLatestVideo } from './background.js';
 
@@ -34,14 +34,18 @@ if (!isMobile()) {
 }
 
 DOM.mouseToggle.addEventListener('click', () => {
-	toggleCursor();
+	if (bodyEl.classList.contains('no-cur')) {
+		showCursor();
+	} else {
+		hideCursor();
+	}
 	DOM.cursor.classList.toggle('visible');
 	DOM.mouseToggle.classList.toggle('mTactive');
 });
 
 window.addEventListener('resize', () => {
 	if (bodyEl.classList.contains('no-cur')) {
-		toggleCursor();
+		showCursor();
 		DOM.cursor.classList.toggle('visible');
 		DOM.mouseToggle.classList.toggle('mTactive');
 		alert('Resize detected: Disabling cursor effect', 'positive');
@@ -88,5 +92,4 @@ document.addEventListener('DOMContentLoaded', () => {
 	}, 250);
 
 	checkOrientation();
-
 });

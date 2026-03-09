@@ -1,5 +1,6 @@
 // infoPanel.js
 import { DOM } from './dom.js';
+import { rmLabel } from './ui.js';
 
 export function popOut() {
   const popped = !DOM.infoToggle.checked;
@@ -8,6 +9,8 @@ export function popOut() {
   DOM.popoutIndicator.classList.toggle('down', popped);
   DOM.popLabel.classList.toggle('active', popped);
   DOM.clickSpace.classList.toggle('disabled', DOM.infoToggle.checked);
+
+  rmLabel();
 }
 
 export function clickToReturn() {

@@ -23,7 +23,7 @@ export const DOM = {
 	videoInfo: document.getElementById('latest-video'),
 	aspectRatio: window.innerWidth / window.innerHeight,
 	cursor: document.getElementById('cursor'),
-	mouseToggle: document.getElementById('mouseToggle')
+	mouseToggle: document.getElementById('mouseToggle'),
 };
 
 export const htmlEl = document.documentElement;

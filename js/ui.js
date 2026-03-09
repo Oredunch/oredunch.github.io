@@ -4,14 +4,12 @@ import { DOM, isMobile } from './dom.js';
 let isSpinning = false;
 const speed = 50;
 let imaginary = 0;
-let canLeave = false;
 export const samsName = 'Sammy Oredunchinch';
 
 export function showPage() {
 	initName();
 	setTimeout(() => DOM.coverUp.classList.add('opaq'), 100);
 	setTimeout(() => DOM.coverUp.classList.add('disabled'), 1500);
-	setTimeout(() => { canLeave = true; navLeave() }, 1500);
 }
 
 export function spinLogo() {
@@ -76,9 +74,9 @@ export function alert(message, type = 'error') {
 	}, 2500);
 }
 
-export function toggleCursor() {
+export function showCursor() {
 	document.querySelectorAll('*').forEach(el => {
-		el.classList.toggle('no-cur');
+		el.classList.remove('no-cur');
 	});
 }
 
@@ -97,4 +95,16 @@ export function checkOrientation() {
 	} else {
 		document.body.classList.remove('rotate-splash');
 	}
+}
+
+export function addLabelNew() {
+	let newElement = document.createElement('div');
+	newElement.textContent = 'New!';
+	newElement.classList.add('newIndicatorLabel');
+	setTimeout(() => { newElement.classList.add('visible') ; }, 500);
+	DOM.popLabel.appendChild(newElement);
+}
+
+export function rmLabel() {
+	DOM.popLabel.removeChild(DOM.popLabel.lastChild)
 }

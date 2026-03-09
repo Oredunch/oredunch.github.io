@@ -1,6 +1,6 @@
 // background.js
 import { DOM } from './dom.js';
-import { alert, showImage, showVideo } from './ui.js';
+import { alert, showImage, showVideo, addLabelNew } from './ui.js';
 
 
 function reloadResource(element, onSuccess, retries = 3, delay = 1000) {
@@ -71,15 +71,26 @@ export function fetchLatestVideo() {
 		.then(res => res.json())
 		.then(data => {
 			if (!data.videoId) {
-				DOM.videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error.">&#10007; Error loading video.</p>`;
+				DOM.videoInfo.innerHTML = `<p class="error-format" title="Sometimes this shows if the API is not responding or the GitHub Workflow has an error.">&#10007; Error</p>`;
 				DOM.videoInfo.classList.remove('ax');
 				return;
 			}
 			const url = `https://www.youtube.com/watch?v=${data.videoId}`;
-			DOM.videoInfo.innerHTML = `<a data-cursor="pointer" class="no-cur" href="${url}" target="_blank">${data.title}</a>`;
+			DOM.videoInfo.innerHTML = `<a data-cursor="pointer" 
+										class="no-cur" 
+										title="${data.title}" 
+										href="${url}" 
+										target="_blank">
+										${data.title}
+										</a>`;	
+			if (data.daysSince <= 7) {
+				addLabelNew();
+			}
+			
 		})
 		.catch(err => {
 			DOM.videoInfo.textContent = 'Error loading video.';
 			console.error(err);
 		});
+
 }

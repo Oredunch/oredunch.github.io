@@ -1,8 +1,14 @@
 const fs = require('fs');
-const fetch = require('node-fetch');
 
 const apiKey = process.env.YOUTUBE_API_KEY;
 const channelId = 'UCalSUGPb30MGEAxrIo-_QNw';
+
+function daysSince(dateString) {
+	const published = new Date(dateString);
+	const now = new Date();
+	const diff = now - published;
+	return Math.floor(diff / (1000 * 60 * 60 * 24));
+}
 
 async function updateLatestVideo() {
 	const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=1&order=date&type=video&key=${apiKey}`;
@@ -21,7 +27,8 @@ async function updateLatestVideo() {
 		const video = data.items[0];
 		const json = {
 			title: video.snippet.title,
-			videoId: video.id.videoId
+			videoId: video.id.videoId,
+			daysSince: daysSince(video.snippet.publishedAt)
 		};
 
 		fs.writeFileSync('latest-video.json', JSON.stringify(json, null, 2));

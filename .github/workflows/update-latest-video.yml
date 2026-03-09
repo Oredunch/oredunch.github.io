@@ -26,7 +26,6 @@ jobs:
 
       - name: Fetch latest video
         run: |
-          npm install node-fetch@2
           node fetch-latest.js
 
       - name: Commit and push changes
