@@ -1,8 +1,11 @@
 // main.js
-import { DOM, isMobile, htmlEl, bodyEl, isSmall } from './dom.js';
-import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, samsName, showCursor, hideCursor, checkOrientation, alert } from './ui.js';
+import { DOM, isMobile, htmlEl, bodyEl, isSmall, isTablet } from './dom.js';
+import { showPage, spinLogo, endSpin, buttonEffect, nameTypeWrite, randomizeColor, showVideo, showImage, showCursor, hideCursor, checkOrientation, alert, anchorPanel } from './ui.js';
 import { popOut, clickToReturn } from './infoPanel.js';
 import { checkResources, fetchLatestVideo } from './background.js';
+
+let canClick = true;
+const clickDelay = 300; // milliseconds
 
 DOM.logo.addEventListener('click', spinLogo);
 DOM.logo.addEventListener('animationend', endSpin);
@@ -17,13 +20,22 @@ DOM.clickSpace.addEventListener('touchend', e => {
 	e.preventDefault(); // touchend makes like a click simulation
 });
 
+
 ['click', 'touchstart'].forEach(evt => {
 	DOM.menuCloseButton.addEventListener(evt, () => {
+		if (!canClick) return;
+		canClick = false;
+		setTimeout(() => canClick = true, clickDelay);
+
 		DOM.navMenu.classList.toggle('nav-menu-open');
 		DOM.clickSpace.classList.add('disabled');
 	});
 
 	DOM.menuOpenButton.addEventListener(evt, () => {
+		if (!canClick) return;
+		canClick = false;
+		setTimeout(() => canClick = true, clickDelay);
+
 		DOM.navMenu.classList.toggle('nav-menu-open');
 		DOM.clickSpace.classList.remove('disabled');
 	});
@@ -50,11 +62,14 @@ window.addEventListener('resize', () => {
 		DOM.mouseToggle.classList.toggle('mTactive');
 		alert('Resize detected: Disabling cursor effect', 'positive');
 	}
-	if (isSmall() && !isMobile()) {
+	if (isSmall() && !isMobile() && !isTablet()) {
 		bodyEl.classList.add('ismobile', 'desktop');
 	} else if (!isSmall() && !isMobile()) {
-		bodyEl.classList.remove('ismobile', 'desktop');
+		bodyEl.classList.remove('ismobile');
 	}
+
+	anchorPanel();
+	checkOrientation();
 })
 
 window.addEventListener('orientationchange', () => {
@@ -63,12 +78,17 @@ window.addEventListener('orientationchange', () => {
 
 if (isMobile()) {
 	bodyEl.classList.add('ismobile');
+	bodyEl.classList.remove('desktop');
 }
 
-if (isSmall() && !isMobile()) {
+if (isTablet()) {
+	bodyEl.classList.add('istablet');
+	bodyEl.classList.remove('desktop');
+}
+
+if (isSmall() && !isMobile() && !isTablet()) {
 	bodyEl.classList.add('ismobile', 'desktop');
 }
-
 
 DOM.backgroundAnimationVideo.addEventListener('canplaythrough', showVideo);
 
@@ -76,6 +96,7 @@ DOM.backgroundImageImage.addEventListener('load', showImage);
 
 window.addEventListener('load', () => {
 	document.body.style.visibility = 'visible';
+	anchorPanel();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -84,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	setTimeout(() => {
 		DOM.infoToggle.checked = true;
 
-		if (!isMobile()) {
+		if (!isMobile() && !isTablet()) {
 			setTimeout(nameTypeWrite, 200);
 		}
 		setTimeout(checkResources, 250);
@@ -93,3 +114,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	checkOrientation();
 });
+

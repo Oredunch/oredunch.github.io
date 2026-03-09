@@ -36,5 +36,13 @@ export function isSmall() {
 }
 
 export function isMobile() {
-	return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+	const ua = navigator.userAgent;
+	const isTouchDevice = 'ontouchend' in document;
+	return /Mobi|Android|iPhone|iPod/i.test(ua) && !(navigator.platform === 'MacIntel' && isTouchDevice);
+}
+
+export function isTablet() {
+	const ua = navigator.userAgent;
+	const isTouchDevice = 'ontouchend' in document;
+	return /iPad|Android/i.test(ua) || (navigator.platform === 'MacIntel' && isTouchDevice);
 }

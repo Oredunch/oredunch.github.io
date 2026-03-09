@@ -52,12 +52,16 @@
 }
 
 
-.pad {
+.ismobile .pad {
 	padding: 24px !important;
 	width: auto !important;
-	height: 50px;
-	left: 8px;
-	right: auto;
+	height: 50px !important;
+	flex-grow: 0 !important;
+}
+
+.istablet90 .pad,
+.desktop .pad {
+	display: none !important;
 }
 
 .nav-menu-area {
@@ -126,7 +130,7 @@
 	background-clip: text;
 	font-family: 'Tektur', sans-serif;
 
-	animation: shine 4s linear infinite; 
+	animation: shine 4s linear infinite;
 }
 
 .notice {
@@ -146,15 +150,18 @@
 
 html,
 body {
+	display: flex;
 	margin: 0;
 	padding: 0;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	overflow: hidden;
+	justify-content: center;
 	font-family: 'Tektur', sans-serif;
 	background: linear-gradient(345deg, var(--bg-color), var(--bg-color_target));
 	color: var(--text-color);
 }
+
 
 .opaq {
 	opacity: 0%;
@@ -176,6 +183,14 @@ body {
 #mouseToggle.mTactive svg {
 	fill: #444;
 }
+
+.ismobile:not(.desktop) #mousetoggle,
+.ismobile:not(.desktop) .cursor-overlay,
+.istablet:not(.desktop) #mousetoggle,
+.istablet:not(.desktop) .cursor-overlay {
+	display: none !important;
+}
+
 
 
 .background-animation,
@@ -269,7 +284,7 @@ body {
 	height: 150px;
 	border-radius: 8px;
 	border: 2px solid var(--text-color-dark-dull);
-	z-index: 1;
+	z-index: 2;
 }
 
 .center-right {
@@ -562,7 +577,7 @@ label.button {
 		flex-direction: column;
 		margin-left: 56px;
 		top: auto;
-		bottom: calc(50% + 75px);
+		bottom: calc(50%);
 		align-items: center;
 		justify-content: center;
 		background-color: var(--base-element);
@@ -631,11 +646,10 @@ label.button {
 
 /*mobile styles likes this instead of usuing @media*/
 
-.ismobile:not(.desktop) .cursor-overlay {
-	display: none;
-}
-
-.ismobile:not(.desktop) #mouseToggle {
+.ismobile:not(.desktop) .cursor-overlay,
+.istablet:not(.desktop) .cursor-overlay,
+.ismobile:not(.desktop) #mouseToggle,
+.istablet:not(.desktop) #mouseToggle {
 	display: none;
 }
 
@@ -777,8 +791,8 @@ label.button {
 	justify-content: center;
 	background-color: var(--base-element);
 	width: auto;
-	height: auto;
-	padding: 12px 24px;
+	height: fit-content;
+	padding: 16px 24px;
 	transform: translateY(-100%);
 	border-radius: 22px;
 	border: 2px solid var(--text-color-dark-dull);
@@ -787,9 +801,13 @@ label.button {
 	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
+.ismobile .center2 * {
+	margin: 0;
+}
+
 .ismobile .center2.poppedout {
 	position: absolute;
-	transform: translateY(50%);
+	transform: translateY(100%);
 	opacity: 100%;
 }
 
@@ -803,6 +821,7 @@ label.button {
 
 .ismobile .center {
 	display: flex;
+	position: absolute;
 	flex-direction: column;
 	justify-content: center;
 	padding: 12px;
@@ -842,10 +861,6 @@ label.button {
 	text-align: center;
 }
 
-.ismobile .bl {
-	display: flex;
-}
-
 .ismobile .button {
 	padding: 16px;
 }
@@ -858,7 +873,7 @@ a.button.activated {
 }
 
 .spin {
-	will-change: transform, opacity;	
+	will-change: transform, opacity;
 	z-index: 10;
 	animation: tapSpin 2s ease forwards;
 }
@@ -956,8 +971,8 @@ a {
 	font-family: 'Space Mono', monospace !important;
 }
 
-
-.rotate-splash::before {
+/*
+.ismobile.rotate-splash::before {
 	content: "Please rotate your phone.\AMobile landscape layout is not supported.";
 	position: fixed;
 	inset: 0;
@@ -970,8 +985,8 @@ a {
 	font-size: 2rem;
 	font-weight: bolder;
 	z-index: 9999;
-}
+} */
 
 * {
 	user-select: none;
-}	
+}

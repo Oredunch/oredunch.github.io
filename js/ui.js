@@ -1,5 +1,5 @@
 // ui.js
-import { DOM, isMobile } from './dom.js';
+import { bodyEl, DOM, isMobile, isTablet } from './dom.js';
 
 let isSpinning = false;
 const speed = 50;
@@ -87,13 +87,14 @@ export function hideCursor() {
 }
 
 export function checkOrientation() {
-	if (!isMobile) return;
+	if (!isTablet()) return;
 
-	const orientation = window.orientation;
-	if (orientation === 90 || orientation === -90) {
-		document.body.classList.add('rotate-splash');
+	if (window.matchMedia("(orientation: landscape)").matches) {
+		bodyEl.classList.add('istablet90');
+		bodyEl.classList.remove('ismobile');
 	} else {
-		document.body.classList.remove('rotate-splash');
+		bodyEl.classList.remove('istablet90');
+		bodyEl.classList.add('ismobile');
 	}
 }
 
@@ -101,12 +102,21 @@ export function addLabelNew() {
 	let newElement = document.createElement('div');
 	newElement.textContent = 'New!';
 	newElement.classList.add('newIndicatorLabel');
-	setTimeout(() => { newElement.classList.add('visible') ; }, 500);
+	setTimeout(() => { newElement.classList.add('visible'); }, 500);
 	DOM.popLabel.appendChild(newElement);
 }
 
 export function rmLabel() {
-	if (popLabel.childNodes.length === 2) {
+	if (DOM.popLabel.childNodes.length === 2) {
 		DOM.popLabel.removeChild(DOM.popLabel.lastChild);
 	}
+}
+
+export function anchorPanel() { // got tired of my css (which i have completely blown up with unorganized crap and inconsistency)
+	const parent = DOM.centerPrimary;
+	const panel = DOM.infoTab;
+
+	const bottomPx = window.innerHeight - parent.getBoundingClientRect().top;
+
+	panel.style.bottom = bottomPx - 2 + 'px';
 }
