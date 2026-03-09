@@ -38,7 +38,6 @@
 .padding {
 	font-family: 'Tektur', sans-serif;
 	font-weight: 100;
-	padding: 0px 16px 0px 16px;
 }
 
 .cover {
@@ -56,6 +55,7 @@
 .pad {
 	padding: 24px !important;
 	width: auto !important;
+	height: 50px;
 	left: 8px;
 	right: auto;
 }
@@ -525,7 +525,7 @@ label.button {
 	}
 
 	.nav-bar.nav-active {
-		transform: translateY(0);
+		transform: translateX(0);
 	}
 
 	.nav-title-bar {
@@ -640,11 +640,11 @@ label.button {
 }
 
 .ismobile .nav-bar {
+	position: absolute;
 	display: flex;
 	flex-direction: column;
 	margin: 0;
 	justify-content: start;
-	position: absolute;
 	overflow: hidden;
 	border-right: 2px solid #388;
 	top: 0;
@@ -655,6 +655,10 @@ label.button {
 	backdrop-filter: saturate(8) blur(16px);
 	background-color: #3338;
 	transition: transform 0.4s var(--bezier);
+}
+
+.ismobile .nav-menu-open {
+	transform: translateX(0);
 }
 
 .ismobile .nav-bar ul {
@@ -768,16 +772,16 @@ label.button {
 	flex-direction: column;
 	top: 0;
 	opacity: 0%;
+	gap: 16px;
 	align-items: center;
 	justify-content: center;
 	background-color: var(--base-element);
 	width: auto;
 	height: auto;
-	padding: 12px;
+	padding: 12px 24px;
 	transform: translateY(-100%);
-	border-radius: 0px 0px 8px 8px;
+	border-radius: 22px;
 	border: 2px solid var(--text-color-dark-dull);
-	border-top: none;
 	backdrop-filter: blur(16px);
 	z-index: 12;
 	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -785,7 +789,7 @@ label.button {
 
 .ismobile .center2.poppedout {
 	position: absolute;
-	transform: translateY(0);
+	transform: translateY(50%);
 	opacity: 100%;
 }
 
