@@ -106,5 +106,7 @@ export function addLabelNew() {
 }
 
 export function rmLabel() {
-	DOM.popLabel.removeChild(DOM.popLabel.lastChild)
+	if (popLabel.childNodes.length === 2) {
+		DOM.popLabel.removeChild(DOM.popLabel.lastChild);
+	}
 }
