@@ -2,8 +2,8 @@ name: Update Latest YouTube Video
 
 on:
   schedule:
-    - cron: '0 0 * * *' # runs daily at 00:00 UTC
-  workflow_dispatch: # allows manual run
+    - cron: '0 0 * * *'
+  workflow_dispatch: 
 
 permissions:
   contents: write
@@ -17,12 +17,12 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Fetch latest video
         run: |
