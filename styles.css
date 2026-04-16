@@ -162,6 +162,37 @@ body {
 	color: var(--text-color);
 }
 
+.mouse-controls {
+	position: absolute;
+	display: grid;
+	grid-template-columns: 32px 32px;
+	grid-template-rows: 32px;
+	gap: 0;
+	padding: 0;
+	margin: 0;
+	width: 64px;
+	z-index: 103;
+	top: 12px;
+	right: 12px;
+}
+
+.mouse-controls * {
+	width: 32px;
+	height: 32px;
+}
+
+.subtle {
+	display: block;
+	font-size: 16px;
+	text-align: center;
+	line-height: 32px;
+	font-weight: 600;
+	color: #888;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	margin: 0;
+}
 
 .opaq {
 	opacity: 0%;
@@ -171,9 +202,8 @@ body {
 	position: absolute;
 	margin: 0;
 	width: 32px;
-	z-index: 103;
-	top: 12px;
-	right: 12px;
+	top: 0;
+	right: 0;
 }
 
 #mouseToggle svg {
@@ -185,9 +215,11 @@ body {
 }
 
 .ismobile:not(.desktop) #mousetoggle,
-.ismobile:not(.desktop) .cursor-overlay,
+.ismobile:not(.desktop) .cursor-overlay
+.ismobile:not(.desktop) .mouse-controls,
 .istablet:not(.desktop) #mousetoggle,
-.istablet:not(.desktop) .cursor-overlay {
+.istablet:not(.desktop) .cursor-overlay,
+.istablet:not(.desktop) .mouse-controls {
 	display: none !important;
 }
 

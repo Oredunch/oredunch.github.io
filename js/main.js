@@ -55,6 +55,15 @@ DOM.mouseToggle.addEventListener('click', () => {
 	DOM.mouseToggle.classList.toggle('mTactive');
 });
 
+window.addEventListener("keydown", (event) => {
+    if (event.key.toLowerCase() === "m") {
+        const mouseToggle = document.getElementById("mouseToggle");
+        if (mouseToggle) {
+            mouseToggle.click();
+        }
+    }
+});
+
 window.addEventListener('resize', () => {
 	if (bodyEl.classList.contains('no-cur')) {
 		showCursor();
