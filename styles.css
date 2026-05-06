@@ -588,6 +588,10 @@ label.button {
 		padding: 2px;
 		border-radius: 4px;
 		color: #0366d6 !important;
+		&:hover {
+			background-color: #508f8f;
+			color: #1f1f1f !important;
+		}
 	}
 
 	.ax:hover {
