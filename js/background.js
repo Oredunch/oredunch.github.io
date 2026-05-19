@@ -83,7 +83,7 @@ export function fetchLatestVideo() {
 										target="_blank">
 										${data.title}
 										</a>`;	
-			if (data.daysSince <= 7) {
+			if (data.isNew) {
 				addLabelNew();
 			}
 			
