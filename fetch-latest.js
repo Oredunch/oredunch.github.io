@@ -3,16 +3,12 @@ const fs = require('fs');
 const apiKey = process.env.YOUTUBE_API_KEY;
 const channelId = 'UCalSUGPb30MGEAxrIo-_QNw';
 
-function daysSince(dateString) {
+function isNew(dateString) {
 	const published = new Date(dateString);
 	const now = new Date();
 	const diff = now - published;
 	let result = Math.floor(diff / (1000 * 60 * 60 * 24));
-    if (result <= 7) {
-		return "isNew"
-	} else { 
-		return "notNew"
-	}
+    return (result <= 7)
 }
 
 async function updateLatestVideo() {
@@ -33,7 +29,7 @@ async function updateLatestVideo() {
 		const json = {
 			title: video.snippet.title,
 			videoId: video.id.videoId,
-			daysSince: daysSince(video.snippet.publishedAt)
+			isNew: isNew(video.snippet.publishedAt)
 		};
 
 		fs.writeFileSync('latest-video.json', JSON.stringify(json, null, 2));
