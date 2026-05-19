@@ -8,7 +8,11 @@ function daysSince(dateString) {
 	const now = new Date();
 	const diff = now - published;
 	let result = Math.floor(diff / (1000 * 60 * 60 * 24));
-    return Math.min(result, 8);
+    if (result <= 7) {
+		return "isNew"
+	} else { 
+		return "notNew"
+	}
 }
 
 async function updateLatestVideo() {
