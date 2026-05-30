@@ -316,7 +316,7 @@ body {
 	width: auto;
 	height: 150px;
 	border-radius: 8px;
-	border: 2px solid var(--text-color-dark-dull);
+	border: 2px solid var(--text-color-dark-dull-lowopac´);
 	z-index: 2;
 }
 
