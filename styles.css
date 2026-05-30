@@ -6,6 +6,7 @@
 	--info_text-color: #9db9bd;
 	--text-color-dark: #0AA;
 	--text-color-dark-dull: rgb(27, 102, 102);
+	--text-color-dark-dull-lowopac: rgb(27, 102, 102, 0.1);
 	--button-bg: #2c2c33;
 	--button-hover-bg: #4d4954;
 	--button-text-color: #ffffff;
@@ -831,7 +832,7 @@ label.button {
 	padding: 16px 24px;
 	transform: translateY(-100%);
 	border-radius: 22px;
-	border: 2px solid var(--text-color-dark-dull);
+	border: 2px solid var(--text-color-dark-dull-lowopac);
 	backdrop-filter: blur(16px);
 	z-index: 12;
 	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
