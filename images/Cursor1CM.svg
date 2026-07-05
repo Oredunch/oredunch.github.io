@@ -10,9 +10,5 @@
             <circle cx="15" cy="17" r="10" style="fill:white;fill-opacity:0;"/>
             <path d="M15,7C20.519,7 25,11.481 25,17C25,22.519 20.519,27 15,27C9.481,27 5,22.519 5,17C5,11.481 9.481,7 15,7ZM15,8.935C10.549,8.935 6.935,12.549 6.935,17C6.935,21.451 10.549,25.065 15,25.065C19.451,25.065 23.065,21.451 23.065,17C23.065,12.549 19.451,8.935 15,8.935Z" style="fill:white;"/>
         </g>
-        <g transform="matrix(1,0,0,1,-1,2.5)">
-            <rect x="9" y="13" width="16" height="1" style="fill:white;fill-opacity:0;"/>
-            <rect x="9" y="13" width="16" height="1" style="fill:white;"/>
-        </g>
     </g>
 </svg>
