@@ -4,9 +4,9 @@
     </g>
     <g transform="matrix(0.5,0,0,0.5,8,8)">
         <g transform="matrix(0,1,-1,0,32,0)">
-            <path d="M8,16L13,16" style="fill:none;stroke:black;stroke-opacity:0.32;stroke-width:1.25px;"/>
+            <path d="M8,16L13,16" style="fill:none;stroke:white;stroke-opacity:0.32;stroke-width:1.25px;"/>
             <g transform="matrix(1,0,0,1,11,0)">
-                <path d="M8,16L13,16" style="fill:none;stroke:black;stroke-opacity:0.32;stroke-width:1.25px;"/>
+                <path d="M8,16L13,16" style="fill:none;stroke:white;stroke-opacity:0.32;stroke-width:1.25px;"/>
             </g>
         </g>
         <g>
